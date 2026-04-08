@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="html-tag">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%23f43f5e' d='M176 56V96H336V56c0-4.4-3.6-8-8-8H184c-4.4 0-8 3.6-8 8zM128 96V56c0-30.9 25.1-56 56-56H328c30.9 0 56 25.1 56 56V96h32c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V160c0-35.3 28.7-64 64-64h32z'/></svg>">
+    <title>Assist | Virtual Assistant & Administrative Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#f43f5e', // Rose/Pink
+                        secondary: '#475569', // Slate
+                        darkBg: '#0f1117',
+                        surface: '#1e293b',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .dropdown:hover .dropdown-menu { display: block; }
+        .mobile-menu { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .glass { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        ::selection { background-color: #f43f5e; color: white; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-darkBg dark:text-slate-100 transition-colors duration-300 font-sans">
+
+<nav class="fixed w-full z-50 bg-white/70 dark:bg-darkBg/70 glass border-b border-slate-200 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <a href="index.html" class="flex-shrink-0">
+                <div class="flex items-center gap-2 md:gap-3">
+                    <div class="w-10 h-10 md:w-11 md:h-11 bg-primary rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary/30 rotate-3 transition-transform hover:rotate-0">
+                        <i class="fa-solid fa-briefcase text-lg"></i>
+                    </div>
+                    <span class="font-black text-xl md:text-2xl tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-primary to-rose-400">
+                        ASSIST
+                    </span>
+                </div>
+            </a>
+
+            <div class="hidden lg:flex xl:space-x-8 lg:space-x-4 items-center">
+                <a href="index.html" class="nav-link hover:text-primary transition font-bold text-sm uppercase tracking-widest text-slate-600 dark:text-slate-400">Home</a>
+                <a href="home2.html" class="nav-link hover:text-primary transition font-bold text-sm uppercase tracking-widest text-slate-600 dark:text-slate-400">Home2</a>
+                <a href="about.html" class="nav-link hover:text-primary transition font-bold text-sm uppercase tracking-widest text-slate-600 dark:text-slate-400">About</a>
+                <a href="service.html" class="nav-link hover:text-primary transition font-bold text-sm uppercase tracking-widest text-slate-600 dark:text-slate-400">Services</a>
+                <a href="contact.html" class="nav-link hover:text-primary transition font-bold text-sm uppercase tracking-widest text-slate-600 dark:text-slate-400">Contact</a>
+                
+                <div class="relative group py-2">
+                    <button id="dashboard-btn" class="flex items-center gap-1 hover:text-primary font-bold text-sm uppercase tracking-widest text-slate-600 dark:text-slate-400">
+                        Dashboard <i class="fa-solid fa-chevron-down text-[10px]"></i>
+                    </button>
+                    <div class="absolute hidden group-hover:block bg-white dark:bg-surface shadow-2xl rounded-xl mt-1 w-52 border border-slate-100 dark:border-slate-700 overflow-hidden">
+                        <a href="user.html" class="nav-link block px-5 py-3 hover:bg-rose-50 dark:hover:bg-rose-900/20 hover:text-primary transition text-sm font-bold">Client Portal</a>
+                    </div>
+                </div>
+            </div>
+            <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    // Get the current page filename (e.g., "about.html")
+    const currentPage = window.location.pathname.split("/").pop() || "index.html";
+
+    // Select all links in Desktop and Mobile menus
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    navLinks.forEach(link => {
+        const linkPage = link.getAttribute("href");
+
+        if (linkPage === currentPage) {
+            // Apply Active Styles
+            link.classList.remove("text-slate-600", "dark:text-slate-400"); // Remove default gray
+            link.classList.add("text-primary"); // Add Rose/Pink color
+            
+            // Optional: If the link is inside a dropdown, highlight the dropdown button too
+            if (link.closest('.group')) {
+                const dropBtn = link.closest('.group').querySelector('button');
+                if (dropBtn) dropBtn.classList.add('text-primary');
+            }
+        }
+    });
+});
+</script>
+
+            <div class="hidden lg:flex items-center xl:space-x-5 lg:space-x-3">
+                <button onclick="toggleTheme()" class="w-10 h-10 flex items-center justify-center rounded-full border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                    <i id="theme-icon" class="fa-solid fa-moon text-slate-500"></i>
+                </button>
+                <button onclick="toggleDirection()" class="text-[10px] font-black px-2 py-1 border-2 border-primary text-primary rounded uppercase">LTR</button>
+                
+                <a href="login.html" class="nav-link border-2 border-primary text-primary px-6 py-2.5 rounded-full font-bold text-sm uppercase tracking-widest hover:bg-primary hover:text-white transition-all active:scale-95">
+                    Login
+                </a>
+                
+                <a href="booknow.html" class="bg-primary text-white px-6 py-3 rounded-full font-bold text-sm uppercase tracking-widest hover:brightness-110 active:scale-95 transition shadow-xl shadow-primary/40">
+                    Book
+                </a>
+            </div>
+
+            <div class="lg:hidden flex items-center gap-3">
+                <button onclick="toggleTheme()" class="p-2 transition-colors hover:text-primary">
+                    <i class="fa-solid fa-circle-half-stroke text-primary text-lg"></i>
+                </button>
+                <button onclick="toggleMenu()" class="w-11 h-11 bg-primary text-white rounded-xl flex items-center justify-center shadow-lg shadow-primary/20 active:scale-90 transition-all">
+                    <i class="fa-solid fa-bars-staggered text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div id="mobile-menu" class="fixed inset-y-0 right-0 w-80 max-w-[85vw] bg-white dark:bg-darkBg shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out z-[100] p-8 lg:hidden">
+    
+    <div class="flex justify-between items-center mb-10">
+        <span class="font-black text-xl tracking-tighter text-primary">Menu</span>
+        <button onclick="toggleMenu()" class="w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 hover:text-primary transition">
+            <i class="fa-solid fa-xmark text-2xl"></i>
+        </button>
+    </div>
+
+    <div class="flex flex-col space-y-4">
+    <a href="index.html" class="nav-link text-lg font-bold hover:text-primary transition-colors border-b border-slate-50 dark:border-slate-800 pb-3">Home</a>
+    <a href="home2.html" class="nav-link text-lg font-bold hover:text-primary transition-colors border-b border-slate-50 dark:border-slate-800 pb-3">Home2</a>
+    <a href="about.html" class="nav-link text-lg font-bold hover:text-primary transition-colors border-b border-slate-50 dark:border-slate-800 pb-3">About</a>
+    <a href="service.html" class="nav-link text-lg font-bold hover:text-primary transition-colors border-b border-slate-50 dark:border-slate-800 pb-3">Services</a>
+    <a href="contact.html" class="nav-link text-lg font-bold hover:text-primary transition-colors border-b border-slate-50 dark:border-slate-800 pb-3">Contact</a>
+    
+    <div class="py-2">
+        <p class="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-2">Account</p>
+        <a href="user.html" class="nav-link text-lg font-bold flex items-center gap-2 hover:text-primary transition">
+            <i class="fa-solid fa-user-gear text-sm text-primary"></i> Profile Dashboard
+        </a>
+    </div>
+
+    <div class="flex items-center justify-between py-4 border-t border-slate-50 dark:border-slate-800">
+        <span class="text-sm font-bold uppercase tracking-widest text-slate-500">Direction</span>
+        <button onclick="toggleDirection()" class="font-black uppercase text-primary text-sm border-b-2 border-primary">LTR/RTL</button>
+    </div>
+
+    <div class="pt-4 space-y-4">
+        <a href="login.html" class="nav-link block text-center w-full py-4 rounded-2xl border-2 border-primary text-primary font-bold hover:bg-rose-50 dark:hover:bg-rose-950/20 transition">Login</a>
+        <a href="booknow.html" class="nav-link block text-center w-full py-4 rounded-2xl bg-primary text-white font-bold shadow-lg shadow-primary/30 hover:brightness-110 active:scale-95 transition">Book Now</a>
+    </div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    // 1. Get current filename (e.g., about.html)
+    const path = window.location.pathname;
+    const page = path.split("/").pop() || "index.html";
+
+    // 2. Select all links with the 'nav-link' class
+    const links = document.querySelectorAll(".nav-link");
+
+    links.forEach(link => {
+        // 3. Check if the href matches the current page
+        if (link.getAttribute("href") === page) {
+            // Apply Rose/Pink Color
+            link.classList.add("text-primary");
+            
+            // 4. Specifically for mobile menu: change border color for the active link
+            if (link.classList.contains('border-b')) {
+                link.classList.remove('border-slate-50', 'dark:border-slate-800');
+                link.classList.add('border-primary');
+            }
+
+            // 5. If it's the "Login" or "Book Now" button, we might want a different active style
+            if (link.classList.contains('bg-primary')) {
+                link.classList.add('ring-4', 'ring-rose-200', 'dark:ring-rose-900/40');
+            }
+        }
+    });
+});
+</script>
+</div>
+
+<div id="menu-overlay" onclick="toggleMenu()" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[90] hidden opacity-0 transition-opacity duration-300"></div>
+
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById('mobile-menu');
+        const overlay = document.getElementById('menu-overlay');
+        
+        const isOpen = menu.classList.contains('translate-x-0');
+        
+        if (!isOpen) {
+            // Open Menu
+            menu.classList.remove('translate-x-full');
+            menu.classList.add('translate-x-0');
+            overlay.classList.remove('hidden');
+            setTimeout(() => overlay.classList.add('opacity-100'), 10);
+            document.body.style.overflow = 'hidden';
+        } else {
+            // Close Menu
+            menu.classList.add('translate-x-full');
+            menu.classList.remove('translate-x-0');
+            overlay.classList.remove('opacity-100');
+            setTimeout(() => overlay.classList.add('hidden'), 300);
+            document.body.style.overflow = '';
+        }
+    }
+</script>
+
+<header id="hero-primary" class="relative min-h-[85vh] flex items-center pt-20 overflow-hidden bg-white dark:bg-darkBg">
+    
+    
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+            
+            <div class="w-full lg:w-3/5 text-center lg:text-left">
+                <div class="reveal inline-flex items-center gap-2 px-4 py-2 mb-6 bg-rose-50 dark:bg-rose-900/20 text-primary rounded-xl border border-primary/20">
+                    <i class="fa-solid fa-star text-[10px]"></i>
+                    <span class="text-[10px] md:text-xs font-black uppercase tracking-[0.2em]">The Gold Standard in Virtual Support</span>
+                </div>
+
+                <h1 class="reveal text-4xl md:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tighter text-slate-900 dark:text-white mb-6">
+                    Behind Every Successful <br class="hidden md:block">
+                    Business Is a <span class="text-primary ">Great Assistant</span>
+                </h1>
+
+                <p class="reveal delay-100 text-lg md:text-xl text-slate-500 dark:text-slate-400 font-medium mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                    We help entrepreneurs and businesses save time, reduce workload, and grow faster with expert virtual assistants. <span class="text-slate-900 dark:text-white font-bold">Focus on the vision; we'll handle the rest.</span>
+                </p>
+
+                <div class="reveal delay-200 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <a href="booknow.html" class="group bg-primary text-white px-10 py-5 rounded-2xl font-black text-lg shadow-xl shadow-primary/30 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3">
+                        Get Started Today
+                        <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                    <a href="service.html" class="bg-white dark:bg-surface text-slate-900 dark:text-white border-2 border-slate-200 dark:border-slate-800 px-10 py-5 rounded-2xl font-black text-lg hover:border-primary hover:text-primary transition-all text-center">
+                        Explore Services
+                    </a>
+                </div>
+
+                <div class="reveal delay-300 mt-12 flex flex-wrap justify-center lg:justify-start items-center gap-8 opacity-40 hover:opacity-100 transition-opacity">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-shield-halved text-primary"></i>
+                        <span class="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">Secure & Confidential</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-clock text-primary"></i>
+                        <span class="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">24/7 Global Access</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full lg:w-2/5 relative reveal delay-400">
+                <div class="relative group">
+                    <div class="absolute -inset-4 bg-primary/10 rounded-[3rem] blur-2xl group-hover:bg-primary/20 transition-all"></div>
+                    
+                    <div class="relative bg-white dark:bg-surface rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white dark:border-slate-800 transform rotate-2 group-hover:rotate-0 transition-all duration-500">
+                        <img src="assets/dedicatedassistant" 
+                             alt="Dedicated Assistant" 
+                             class="w-full h-[450px] object-cover">
+                        
+                        <div class="absolute bottom-6 left-6 right-6 bg-white/90 dark:bg-darkBg/90 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-white/20">
+                            <div class="flex items-center gap-3">
+                                <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                                <p class="text-xs font-black text-slate-900 dark:text-white uppercase tracking-widest">Assistant Online</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</header>
+<section id="our-story" class="py-24 bg-slate-50 dark:bg-darkBg relative overflow-hidden">
+    
+    <div class="absolute top-1/2 left-0 -translate-y-1/2 text-[12rem] font-black text-slate-100 dark:text-slate-900/40 select-none pointer-events-none -z-0">
+        MISSION
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+            
+            <div class="w-full lg:w-1/2 reveal">
+                <div class="relative">
+                    <div class="relative z-20 rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white dark:border-surface rotate-2 hover:rotate-0 transition-transform duration-500">
+                        <img src="assets/indexheor" 
+                             alt="Our Team Journey" 
+                             class="w-full h-[400px] md:h-[500px] object-cover">
+                    </div>
+                    
+                    <div class="absolute -bottom-10 -right-6 z-30 hidden md:block w-48 h-48 rounded-3xl overflow-hidden border-4 border-white dark:border-surface shadow-2xl -rotate-6 hover:rotate-0 transition-all duration-500">
+                        <img src="assets/howwestart" 
+                             alt="Where we started" 
+                             class="w-full h-full object-cover">
+                    </div>
+
+                    <div class="absolute -top-6 -left-6 z-30 bg-primary text-white p-6 rounded-3xl shadow-xl shadow-primary/30 animate-bounce-slow">
+                        <p class="text-3xl font-black italic tracking-tighter">Established</p>
+                        <p class="text-xs font-bold uppercase tracking-widest opacity-80">Since 2021</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full lg:w-1/2">
+                <h2 class="text-xs font-black tracking-[0.3em] text-primary uppercase mb-6 reveal">Behind the Brand</h2>
+                <h3 class="text-3xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tighter mb-8 reveal delay-100">
+                    We started with a <span class="text-primary italic">simple mission.</span>
+                </h3>
+
+                <div class="space-y-6 text-slate-600 dark:text-slate-400 font-medium leading-relaxed reveal delay-200">
+                    <p>
+                        It all began in a small home office with a single observation: <span class="text-slate-900 dark:text-white font-bold">brilliant entrepreneurs were drowning in admin.</span> We saw visionary founders spending 70% of their day on emails and scheduling instead of building their dreams.
+                    </p>
+                    <p>
+                        Elite Assist was born to solve that imbalance. We didn't want to just be another outsourcing agency; we wanted to be the <span class="text-primary font-bold">strategic engine</span> that powers business growth.
+                    </p>
+                    <p>
+                        From a team of two to a global network of top-tier virtual assistants, our journey has been defined by one goal: giving you back the one thing you can't buy—<span class="italic underline decoration-primary decoration-2 underline-offset-4">Time.</span>
+                    </p>
+                </div>
+
+                <div class="mt-12 flex items-center gap-6 reveal delay-300">
+                    <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-primary">
+                        <img src="assets/test2" alt="Founder" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h4 class="font-black text-slate-900 dark:text-white tracking-tight">Moni</h4>
+                        <p class="text-xs font-bold text-primary uppercase tracking-widest">Founder & CEO</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<style>
+    @keyframes bounce-slow {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+    }
+    .animate-bounce-slow { animation: bounce-slow 5s ease-in-out infinite; }
+</style>
+<section id="mission-vision" class="py-24 bg-white dark:bg-darkBg relative overflow-hidden">
+    
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] -z-0"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16">
+            
+            <div class="reveal group relative bg-slate-50 dark:bg-surface p-10 md:p-16 rounded-[3rem] border border-slate-100 dark:border-slate-800 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2">
+                <!-- <div class="w-20 h-20 bg-white dark:bg-darkBg rounded-[2rem] shadow-xl flex items-center justify-center mb-10 transition-transform duration-500 group-hover:rotate-[15deg]">
+                    <i class="fa-solid fa-bullseye-arrow text-4xl text-primary"></i>
+                </div> -->
+                
+                <h3 class="text-xs font-black tracking-[0.4em] text-primary uppercase mb-6">Our Mission</h3>
+                <p class="text-2xl md:text-3xl font-black text-slate-900 dark:text-white leading-tight tracking-tighter ">
+                    “To <span class="text-primary">simplify</span> business operations by providing reliable, high-quality virtual assistance.”
+                </p>
+                
+                <div class="mt-10 h-1 w-20 bg-primary rounded-full transition-all duration-500 group-hover:w-full opacity-30"></div>
+            </div>
+
+            <div class="reveal delay-100 group relative bg-slate-900 p-10 md:p-16 rounded-[3rem] border border-white/5 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2">
+                <!-- <div class="w-20 h-20 bg-white/10 rounded-[2rem] shadow-xl flex items-center justify-center mb-10 transition-transform duration-500 group-hover:scale-110">
+                    <i class="fa-solid fa-earth-americas text-4xl text-primary"></i>
+                </div> -->
+                
+                <h3 class="text-xs font-black tracking-[0.4em] text-primary uppercase mb-6">Our Vision</h3>
+                <p class="text-2xl md:text-3xl font-black text-white leading-tight tracking-tighter italic">
+                    “To become the go-to <span class="text-primary">global partner</span> for remote business support.”
+                </p>
+
+                <div class="mt-10 h-1 w-20 bg-primary rounded-full transition-all duration-500 group-hover:w-full opacity-50"></div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section id="industries" class="py-24 bg-white dark:bg-darkBg relative overflow-hidden">
+    <div class="absolute top-10 right-0 text-[8rem] lg:text-[10rem] font-black text-slate-50 dark:text-slate-900/40 select-none pointer-events-none z-0 hidden md:block">
+        EXPERTS
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <div class="text-center mb-16 reveal">
+            <h2 class="text-xs font-black tracking-[0.3em] text-primary uppercase mb-4">Niche Expertise</h2>
+            <h3 class="text-3xl md:text-5xl font-black tracking-tighter text-slate-900 dark:text-white">
+                Solutions Tailored for <span class="text-primary ">Your Industry</span>
+            </h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            
+            <div class="reveal group relative bg-slate-50 dark:bg-surface p-8 rounded-[2rem] border border-slate-100 dark:border-slate-800 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20">
+                <div class="w-14 h-14 bg-white dark:bg-darkBg rounded-2xl shadow-lg flex items-center justify-center mb-6 transition-transform group-hover:rotate-12">
+                    <i class="fa-solid fa-rocket text-2xl text-primary"></i>
+                </div>
+                <h4 class="text-xl font-black text-slate-900 dark:text-white mb-3">Startups</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-widest leading-relaxed">
+                    Scale fast with flexible support for rapid growth phases.
+                </p>
+                <div class="mt-6 h-1 w-0 bg-primary group-hover:w-full transition-all duration-500 rounded-full"></div>
+            </div>
+
+            <div class="reveal delay-100 group relative bg-slate-50 dark:bg-surface p-8 rounded-[2rem] border border-slate-100 dark:border-slate-800 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20">
+                <div class="w-14 h-14 bg-white dark:bg-darkBg rounded-2xl shadow-lg flex items-center justify-center mb-6 transition-transform group-hover:rotate-12">
+                    <i class="fa-solid fa-shop text-2xl text-primary"></i>
+                </div>
+                <h4 class="text-xl font-black text-slate-900 dark:text-white mb-3">Small Business</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-widest leading-relaxed">
+                    The reliable backbone you need to manage daily operations.
+                </p>
+                <div class="mt-6 h-1 w-0 bg-primary group-hover:w-full transition-all duration-500 rounded-full"></div>
+            </div>
+
+            <div class="reveal delay-200 group relative bg-primary p-8 rounded-[2rem] shadow-xl shadow-primary/30 transition-all duration-500 hover:-translate-y-2 z-20">
+                <div class="w-14 h-14 bg-white rounded-2xl shadow-lg flex items-center justify-center mb-6">
+                    <i class="fa-solid fa-cart-shopping text-2xl text-primary"></i>
+                </div>
+                <h4 class="text-xl font-black text-white mb-3">E-commerce</h4>
+                <p class="text-xs text-white/80 font-bold uppercase tracking-widest leading-relaxed">
+                    24/7 order management, inventory & customer success.
+                </p>
+                <div class="mt-6 h-1 w-full bg-white/30 rounded-full"></div>
+            </div>
+
+            <div class="reveal delay-300 group relative bg-slate-50 dark:bg-surface p-8 rounded-[2rem] border border-slate-100 dark:border-slate-800 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20">
+                <div class="w-14 h-14 bg-white dark:bg-darkBg rounded-2xl shadow-lg flex items-center justify-center mb-6 transition-transform group-hover:rotate-12">
+                    <i class="fa-solid fa-house-chimney text-2xl text-primary"></i>
+                </div>
+                <h4 class="text-xl font-black text-slate-900 dark:text-white mb-3">Real Estate</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-widest leading-relaxed">
+                    Listing coordination, CRM management & lead follow-up.
+                </p>
+                <div class="mt-6 h-1 w-0 bg-primary group-hover:w-full transition-all duration-500 rounded-full"></div>
+            </div>
+
+            <div class="reveal delay-400 group relative bg-slate-50 dark:bg-surface p-8 rounded-[2rem] border border-slate-100 dark:border-slate-800 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20">
+                <div class="w-14 h-14 bg-white dark:bg-darkBg rounded-2xl shadow-lg flex items-center justify-center mb-6 transition-transform group-hover:rotate-12">
+                    <i class="fa-solid fa-chalkboard-user text-2xl text-primary"></i>
+                </div>
+                <h4 class="text-xl font-black text-slate-900 dark:text-white mb-3">Coaches</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-widest leading-relaxed">
+                    Focus on teaching while we manage your calendar and leads.
+                </p>
+                <div class="mt-6 h-1 w-0 bg-primary group-hover:w-full transition-all duration-500 rounded-full"></div>
+            </div>
+
+            <div class="reveal delay-500 group relative bg-slate-50 dark:bg-surface p-8 rounded-[2rem] border border-slate-100 dark:border-slate-800 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20">
+                <div class="w-14 h-14 bg-white dark:bg-darkBg rounded-2xl shadow-lg flex items-center justify-center mb-6 transition-transform group-hover:rotate-12">
+                    <i class="fa-solid fa-file-medical text-2xl text-primary"></i>
+                </div>
+                <h4 class="text-xl font-black text-slate-900 dark:text-white mb-3">Healthcare</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-widest leading-relaxed">
+                    Patient scheduling, billing support & HIPAA-ready admin.
+                </p>
+                <div class="mt-6 h-1 w-0 bg-primary group-hover:w-full transition-all duration-500 rounded-full"></div>
+            </div>
+
+        </div>
+
+        <div class="mt-16 text-center reveal delay-[600ms]">
+            <p class="text-sm font-black text-slate-400 uppercase tracking-[0.3em]">
+                Don't see your industry? <a href="contact.html" class="text-primary hover:underline underline-offset-4 decoration-2 transition-all">Let's Talk.</a>
+            </p>
+        </div>
+    </div>
+</section>
+<section id="milestones" class="py-24 bg-slate-900 overflow-hidden relative">
+    
+    <div class="absolute top-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-[120px] -z-0"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[120px] -z-0"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <div class="text-center mb-20 reveal">
+            <h2 class="text-xs font-black tracking-[0.4em] text-primary uppercase mb-4">Our Track Record</h2>
+            <h3 class="text-3xl md:text-5xl font-black text-white tracking-tighter">
+                Milestones That <span class="text-primary ">Matter.</span>
+            </h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+            
+            <div class="reveal group flex flex-col items-center text-center p-10 rounded-[3rem] bg-white/5 border border-white/10 transition-all duration-500 hover:bg-white/10 hover:border-primary/30">
+                <div class="w-20 h-20 bg-primary/20 text-primary rounded-3xl flex items-center justify-center mb-8 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
+                    <i class="fa-solid fa-users-gear text-3xl"></i>
+                </div>
+                <div class="flex items-baseline gap-1 mb-2">
+                    <span class="count-milestone text-6xl font-black text-white tracking-tighter" data-target="500">0</span>
+                    <span class="text-4xl font-black text-primary">+</span>
+                </div>
+                <p class="text-xs font-black uppercase tracking-[0.3em] text-slate-400">Global Clients Served</p>
+                <div class="mt-6 h-1 w-12 bg-primary rounded-full transition-all duration-500 group-hover:w-24"></div>
+            </div>
+
+            <div class="reveal delay-100 group flex flex-col items-center text-center p-10 rounded-[3rem] bg-white/5 border border-white/10 transition-all duration-500 hover:bg-white/10 hover:border-primary/30">
+                <div class="w-20 h-20 bg-primary/20 text-primary rounded-3xl flex items-center justify-center mb-8 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
+                    <i class="fa-solid fa-check-double text-3xl"></i>
+                </div>
+                <div class="flex items-baseline gap-1 mb-2">
+                    <span class="count-milestone text-6xl font-black text-white tracking-tighter" data-target="10000">0</span>
+                    <span class="text-4xl font-black text-primary">+</span>
+                </div>
+                <p class="text-xs font-black uppercase tracking-[0.3em] text-slate-400">Tasks Successfully Completed</p>
+                <div class="mt-6 h-1 w-12 bg-primary rounded-full transition-all duration-500 group-hover:w-24"></div>
+            </div>
+
+            <div class="reveal delay-200 group flex flex-col items-center text-center p-10 rounded-[3rem] bg-white/5 border border-white/10 transition-all duration-500 hover:bg-white/10 hover:border-primary/30">
+                <div class="w-20 h-20 bg-primary/20 text-primary rounded-3xl flex items-center justify-center mb-8 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
+                    <i class="fa-solid fa-face-smile text-3xl"></i>
+                </div>
+                <div class="flex items-baseline gap-1 mb-2">
+                    <span class="count-milestone text-6xl font-black text-white tracking-tighter" data-target="98">0</span>
+                    <span class="text-4xl font-black text-primary">%</span>
+                </div>
+                <p class="text-xs font-black uppercase tracking-[0.3em] text-slate-400">Client Satisfaction Rate</p>
+                <div class="mt-6 h-1 w-12 bg-primary rounded-full transition-all duration-500 group-hover:w-24"></div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<script>
+    // Milestone Counter Logic
+    const milestoneCounters = document.querySelectorAll('.count-milestone');
+    
+    const startMilestones = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const target = entry.target;
+                const countTo = +target.getAttribute('data-target');
+                let count = 0;
+                
+                // Speed calculation based on target size
+                const duration = 2500; // 2.5 seconds
+                const increment = countTo / (duration / 16); // ~60fps
+
+                const update = () => {
+                    count += increment;
+                    if (count < countTo) {
+                        target.innerText = Math.ceil(count).toLocaleString();
+                        requestAnimationFrame(update);
+                    } else {
+                        target.innerText = countTo.toLocaleString();
+                    }
+                };
+                
+                requestAnimationFrame(update);
+                observer.unobserve(target);
+            }
+        });
+    };
+
+    const milestoneObserver = new IntersectionObserver(startMilestones, {
+        threshold: 0.6
+    });
+
+    milestoneCounters.forEach(counter => milestoneObserver.observe(counter));
+</script>
+<section id="why-choose-us" class="py-24 bg-slate-50 dark:bg-darkBg relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[100px] -z-0"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-[100px] -z-0"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <div class="text-center mb-16 reveal">
+            <h2 class="text-xs font-black tracking-[0.3em] text-primary uppercase mb-4">The Elite Advantage</h2>
+            <h3 class="text-3xl md:text-5xl font-black tracking-tighter text-slate-900 dark:text-white leading-tight">
+                Why Industry Leaders <br class="hidden md:block"> <span class="text-primary ">Trust Us</span>
+            </h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-6 auto-rows-[180px] md:auto-rows-[160px] lg:auto-rows-[180px]">
+            
+            <div class="reveal md:col-span-3 lg:col-span-4 row-span-2 group relative bg-white dark:bg-surface rounded-[2.5rem] p-8 border border-slate-100 dark:border-slate-800 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 overflow-hidden">
+                <div class="relative z-10 flex flex-col h-full">
+                    <div class="w-14 h-14 bg-rose-50 dark:bg-darkBg rounded-2xl flex items-center justify-center text-primary mb-6 group-hover:rotate-12 transition-transform">
+                        <i class="fa-solid fa-user-graduate text-2xl"></i>
+                    </div>
+                    <h4 class="text-2xl font-black mb-4 dark:text-white">Skilled & Trained Assistants</h4>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Rigorous 4-week training in modern tools and executive support ensures top-tier performance from day one.</p>
+                </div>
+                <div class="absolute -bottom-10 -right-10 text-[10rem] md:text-[12rem] text-slate-50 dark:text-slate-800/20 group-hover:text-primary/5 transition-colors -z-0">
+                    <i class="fa-solid fa-award"></i>
+                </div>
+            </div>
+
+            <div class="reveal delay-100 md:col-span-3 lg:col-span-4 row-span-1 group bg-white dark:bg-surface rounded-[2.5rem] p-8 border border-slate-100 dark:border-slate-800 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 flex items-center gap-6">
+                <div class="flex-shrink-0 w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center shadow-lg shadow-primary/30">
+                    <i class="fa-solid fa-piggy-bank text-lg"></i>
+                </div>
+                <div>
+                    <h4 class="text-xl font-black dark:text-white">Cost-Effective</h4>
+                    <p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Save up to 70% vs in-house hiring costs.</p>
+                </div>
+            </div>
+
+            <div class="reveal delay-200 md:col-span-3 lg:col-span-4 row-span-1 group bg-white dark:bg-surface rounded-[2.5rem] p-8 border border-slate-100 dark:border-slate-800 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 flex items-center gap-6">
+                <div class="flex-shrink-0 w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center shadow-lg shadow-primary/30">
+                    <i class="fa-solid fa-calendar-check text-lg"></i>
+                </div>
+                <div>
+                    <h4 class="text-xl font-black dark:text-white">Flexible Plans</h4>
+                    <p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Hourly or monthly. Scale up or down instantly.</p>
+                </div>
+            </div>
+
+            <div class="reveal delay-300 md:col-span-6 lg:col-span-8 row-span-1 group relative bg-primary text-white rounded-[2.5rem] p-8 transition-all duration-500 hover:scale-[1.01] overflow-hidden shadow-xl shadow-primary/20">
+                <div class="relative z-10 flex items-center h-full gap-6">
+                    <div class="w-16 h-16 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center">
+                        <i class="fa-solid fa-clock text-3xl animate-pulse"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-2xl font-black leading-tight">24/7 Availability</h4>
+                        <p class="text-white/80 text-sm mt-1 font-medium">Global teams working across every time zone for you.</p>
+                    </div>
+                </div>
+                <div class="absolute right-0 top-0 h-full w-1/3 bg-gradient-to-l from-white/10 to-transparent pointer-events-none"></div>
+            </div>
+
+            
+
+        </div>
+    </div>
+</section>
+<section id="final-cta" class="py-24 bg-white dark:bg-darkBg relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <div class="relative bg-slate-900 rounded-[3rem] p-10 md:p-20 overflow-hidden shadow-2xl shadow-rose-500/20 text-center group">
+            
+            <div class="absolute -top-24 -right-24 w-96 h-96 bg-primary/20 rounded-full blur-[120px] transition-all duration-700 group-hover:bg-primary/30"></div>
+            <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-primary/10 rounded-full blur-[120px]"></div>
+
+            <div class="relative z-10 max-w-3xl mx-auto">
+                <div class="reveal inline-flex items-center gap-2 px-4 py-2 mb-8 bg-white/5 backdrop-blur-md rounded-full border border-white/10">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                    </span>
+                    <span class="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-white/80">Onboarding Now Open</span>
+                </div>
+
+                <h2 class="reveal delay-100 text-4xl md:text-6xl font-black text-white tracking-tighter mb-8 leading-tight">
+                    Ready to Work <br> <span class="text-primary ">Smarter?</span>
+                </h2>
+                
+                <p class="reveal delay-200 text-slate-400 text-base md:text-xl font-medium mb-12 max-w-xl mx-auto leading-relaxed">
+                    Join hundreds of founders who have reclaimed their time. Your dedicated virtual assistant is just a click away.
+                </p>
+
+                <div class="reveal delay-300 flex flex-col sm:flex-row justify-center items-center gap-4 md:gap-6">
+                    <a href="regeister.html" class="w-full sm:w-auto bg-primary text-white px-10 py-5 rounded-2xl font-black text-lg shadow-xl shadow-primary/30 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3 group/btn">
+                        Hire a Virtual Assistant
+                        <i class="fa-solid fa-bolt-lightning group-hover/btn:animate-bounce"></i>
+                    </a>
+                    
+                    <a href="contact.html" class="w-full sm:w-auto px-10 py-5 rounded-2xl font-black text-lg text-white border-2 border-white/10 hover:border-primary hover:text-primary transition-all flex items-center justify-center gap-3">
+                        Book a Free Consultation
+                        <i class="fa-solid fa-calendar-check"></i>
+                    </a>
+                </div>
+
+                <div class="reveal delay-400 mt-16 pt-10 border-t border-white/5 flex flex-wrap justify-center gap-8 md:gap-12 text-slate-500 text-[10px] font-black uppercase tracking-widest">
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-check text-primary"></i> No Long-term Contracts</span>
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-check text-primary"></i> 7-Day Money Back</span>
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-check text-primary"></i> 24/7 Support</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Section Animation Reveal Logic */
+    .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.8s ease-out;
+    }
+    .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>
+
+<script>
+    // Simple intersection observer for the reveal effect
+    const observerOptions = { threshold: 0.2 };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+     <footer class="bg-white dark:bg-darkBg pt-24 pb-12 border-t border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
+                <div class="space-y-6">
+                    <a href="index.html">
+                        <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white">
+                            <i class="fa-solid fa-briefcase text-xs"></i>
+                        </div>
+                        <span class="font-black text-xl md:text-2xl tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-primary to-rose-400">ASSIST</span>
+                    </div>
+                    </a>
+                    
+                    <p class="text-slate-500 dark:text-slate-400 font-medium leading-relaxed">
+                        Redefining administrative support for the modern entrepreneur. Fast, reliable, and expert-led.
+                    </p>
+                   <div class="flex gap-4">
+    <a href="#" class="w-11 h-11 rounded-full bg-rose-50 dark:bg-slate-800 flex items-center justify-center text-primary dark:text-rose-400 hover:bg-primary hover:text-white transition-all shadow-sm border border-rose-100 dark:border-slate-700">
+        <i class="fa-brands fa-facebook text-lg"></i>
+    </a>
+
+    <a href="#" class="w-11 h-11 rounded-full bg-rose-50 dark:bg-slate-800 flex items-center justify-center text-primary dark:text-rose-400 hover:bg-primary hover:text-white transition-all shadow-sm border border-rose-100 dark:border-slate-700">
+        <i class="fa-brands fa-linkedin-in text-lg"></i>
+    </a>
+
+    <a href="#" class="w-11 h-11 rounded-full bg-rose-50 dark:bg-slate-800 flex items-center justify-center text-primary dark:text-rose-400 hover:bg-primary hover:text-white transition-all shadow-sm border border-rose-100 dark:border-slate-700">
+        <i class="fa-brands fa-instagram text-lg"></i>
+    </a>
+</div>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-black uppercase tracking-[0.3em] mb-8 text-primary">Navigation</h4>
+                    <ul class="space-y-4 font-bold text-sm">
+                        <li><a href="index.html" class="hover:text-primary transition">Home</a></li>
+                        <li><a href="about.html" class="hover:text-primary transition">About Us</a></li>
+                        <li><a href="service.html" class="hover:text-primary transition">Services</a></li>
+                        <li><a href="contact.html" class="hover:text-primary transition">Contact</a></li>
+                        <li><a href="booknow.html" class="text-primary hover:brightness-110 underline decoration-2 underline-offset-8">Book Now</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-black uppercase tracking-[0.3em] mb-8 text-primary">Resources</h4>
+                    <ul class="space-y-4 font-bold text-sm">
+                         <li><a href="home2.html" class="hover:text-primary transition">Home2</a></li>
+                        <li><a href="comingsoon.html" class="hover:text-primary transition">Coming Soon</a></li>
+                        <li><a href="404.html" class="hover:text-primary transition">404 Error</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Terms</a></li>
+                        <li><a href="pricing.html" class="hover:text-primary transition">Pricing</a></li>
+                    </ul>
+                </div>
+
+                <div class="bg-rose-50 dark:bg-surface p-8 rounded-3xl border border-rose-100 dark:border-slate-700">
+                    <h4 class="font-black mb-4">Newsletter</h4>
+                    <p class="text-xs text-slate-500 mb-6">Stay ahead with the latest productivity hacks.</p>
+                    <form class="space-y-3">
+                        <input type="email" placeholder="Your Email" class="w-full px-5 py-3 rounded-xl bg-white dark:bg-darkBg border border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-primary outline-none text-sm">
+                        <button class="w-full bg-primary text-white py-3 rounded-xl font-bold shadow-lg shadow-primary/20 hover:brightness-110 transition">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="text-center pt-12 border-t border-slate-100 dark:border-slate-800 text-slate-400 text-[10px] font-black tracking-widest uppercase">
+                &copy; 2026 Assist. Designed for Excellence.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const html = document.getElementById('html-tag');
+        const themeIcon = document.getElementById('theme-icon');
+
+        if (localStorage.getItem('theme') === 'dark') {
+            html.classList.add('dark');
+            themeIcon?.classList.replace('fa-moon', 'fa-sun');
+        }
+        if (localStorage.getItem('dir') === 'rtl') {
+            html.setAttribute('dir', 'rtl');
+        }
+
+        function toggleTheme() {
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                themeIcon?.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark');
+                themeIcon?.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        function toggleDirection() {
+            const currentDir = html.getAttribute('dir');
+            const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+            html.setAttribute('dir', newDir);
+            localStorage.setItem('dir', newDir);
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('translate-x-full');
+        }
+    </script>
+</body>
+</html>

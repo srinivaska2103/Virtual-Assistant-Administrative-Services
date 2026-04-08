@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="html-tag">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%23f43f5e' d='M176 56V96H336V56c0-4.4-3.6-8-8-8H184c-4.4 0-8 3.6-8 8zM128 96V56c0-30.9 25.1-56 56-56H328c30.9 0 56 25.1 56 56V96h32c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V160c0-35.3 28.7-64 64-64h32z'/></svg>">
+    <title>404 - Page Not Found | Assist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#f43f5e', // Rose/Pink
+                        darkBg: '#0f1117',
+                        surface: '#1e293b',
+                    },
+                    animation: {
+                        'bounce-slow': 'bounce 3s linear infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glitch {
+            text-shadow: 0.05em 0 0 rgba(244, 63, 94, 0.75),
+                         -0.025em -0.05em 0 rgba(0, 255, 255, 0.75),
+                         0.025em 0.05em 0 rgba(255, 255, 0, 0.75);
+            animation: glitch 500ms infinite;
+        }
+        @keyframes glitch {
+            0% { text-shadow: 0.05em 0 0 rgba(244, 63, 94, 0.75); }
+            15% { text-shadow: -0.05em -0.025em 0 rgba(0, 255, 255, 0.75); }
+            50% { text-shadow: 0.025em 0.05em 0 rgba(255, 255, 0, 0.75); }
+            100% { text-shadow: -0.025em 0 0 rgba(244, 63, 94, 0.75); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-darkBg dark:text-slate-100 transition-colors duration-300 font-sans min-h-screen flex flex-col overflow-hidden">
+
+    <header class="absolute top-0 left-0 w-full p-4 md:p-6 flex justify-between items-center z-50">
+        <a href="index.html" class="flex items-center gap-2 md:gap-3 group">
+            <div class="w-9 h-9 md:w-10 md:h-10 bg-primary rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary/30 rotate-3 group-hover:rotate-0 transition-transform">
+                <i class="fa-solid fa-briefcase text-sm md:text-base"></i>
+            </div>
+            <span class="font-black text-xl md:text-2xl tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-primary to-rose-400">ASSIST</span>
+        </a>
+
+        <div class="flex items-center gap-2 md:gap-4">
+            <button onclick="toggleDirection()" class="text-[9px] md:text-[10px] font-black px-2 md:px-3 py-1 border-2 border-slate-900 dark:border-white rounded uppercase hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-darkBg transition">LTR</button>
+            <button onclick="toggleTheme()" class="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center rounded-full bg-white dark:bg-surface shadow-md hover:text-primary transition">
+                <i id="theme-icon" class="fa-solid fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-grow flex flex-col items-center justify-center p-6 relative">
+        
+        <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-[100px] animate-pulse"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-primary/5 rounded-full blur-[100px]"></div>
+
+        <div class="relative z-10 text-center">
+            <h1 class="glitch text-[8rem] md:text-[12rem] lg:text-[15rem] font-black leading-none tracking-tighter text-slate-900 dark:text-white opacity-20">
+                404
+            </h1>
+
+            <div class="mt-[-4rem] md:mt-[-6rem]">
+                <div class="inline-block p-4 mb-6 animate-bounce-slow">
+                    <i class="fa-solid fa-compass text-6xl text-primary"></i>
+                </div>
+                
+                <h2 class="text-2xl md:text-4xl font-black mb-4 tracking-tight">Oops! You're Off Course.</h2>
+                <p class="text-slate-500 dark:text-slate-400 max-w-md mx-auto mb-10 font-medium">
+                    The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="index.html" class="w-full sm:w-auto bg-primary text-white px-8 py-4 rounded-2xl font-black text-sm uppercase tracking-widest shadow-xl shadow-primary/30 hover:scale-105 active:scale-95 transition-all">
+                        Back to Home
+                    </a>
+                    <a href="contact.html" class="w-full sm:w-auto border-2 border-slate-200 dark:border-slate-800 px-8 py-4 rounded-2xl font-black text-sm uppercase tracking-widest hover:border-primary hover:text-primary transition-all">
+                        Report Issue
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <i class="fa-solid fa-gear absolute top-1/3 left-10 md:left-20 text-4xl text-slate-200 dark:text-slate-800 animate-spin-slow hidden sm:block" style="animation-duration: 10s"></i>
+        <i class="fa-solid fa-envelope absolute bottom-1/3 right-10 md:right-20 text-3xl text-slate-200 dark:text-slate-800 animate-bounce hidden sm:block"></i>
+    </main>
+
+    <script>
+        const html = document.getElementById('html-tag');
+        const themeIcon = document.getElementById('theme-icon');
+
+        // Initial Load Persistence
+        if (localStorage.getItem('theme') === 'dark') {
+            html.classList.add('dark');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        }
+        if (localStorage.getItem('dir') === 'rtl') {
+            html.setAttribute('dir', 'rtl');
+        }
+
+        function toggleTheme() {
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        function toggleDirection() {
+            const currentDir = html.getAttribute('dir');
+            const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+            html.setAttribute('dir', newDir);
+            localStorage.setItem('dir', newDir);
+        }
+    </script>
+</body>
+</html>

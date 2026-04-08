@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="html-tag">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%23f43f5e' d='M176 56V96H336V56c0-4.4-3.6-8-8-8H184c-4.4 0-8 3.6-8 8zM128 96V56c0-30.9 25.1-56 56-56H328c30.9 0 56 25.1 56 56V96h32c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V160c0-35.3 28.7-64 64-64h32z'/></svg>">
+    <title>Assist | Virtual Assistant & Administrative Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#f43f5e', // Rose/Pink
+                        secondary: '#475569', // Slate
+                        darkBg: '#0f1117',
+                        surface: '#1e293b',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .dropdown:hover .dropdown-menu { display: block; }
+        .mobile-menu { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .glass { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        ::selection { background-color: #f43f5e; color: white; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-darkBg dark:text-slate-100 transition-colors duration-300 font-sans">
+
+<nav class="fixed w-full z-50 bg-white/70 dark:bg-darkBg/70 glass border-b border-slate-200 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <a href="index.html" class="flex-shrink-0">
+                <div class="flex items-center gap-2 md:gap-3">
+                    <div class="w-10 h-10 md:w-11 md:h-11 bg-primary rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary/30 rotate-3 transition-transform hover:rotate-0">
+                        <i class="fa-solid fa-briefcase text-lg"></i>
+                    </div>
+                    <span class="font-black text-xl md:text-2xl tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-primary to-rose-400">
+                        ASSIST
+                    </span>
+                </div>
+            </a>
+
+            <div class="hidden lg:flex xl:space-x-8 lg:space-x-4 items-center">
+                <a href="index.html" class="nav-link hover:text-primary transition font-bold text-sm uppercase tracking-widest text-slate-600 dark:text-slate-400">Home</a>
+                <a href="home2.html" class="nav-link hover:text-primary transition font-bold text-sm uppercase tracking-widest text-slate-600 dark:text-slate-400">Home2</a>
+                <a href="about.html" class="nav-link hover:text-primary transition font-bold text-sm uppercase tracking-widest text-slate-600 dark:text-slate-400">About</a>
+                <a href="service.html" class="nav-link hover:text-primary transition font-bold text-sm uppercase tracking-widest text-slate-600 dark:text-slate-400">Services</a>
+                <a href="contact.html" class="nav-link hover:text-primary transition font-bold text-sm uppercase tracking-widest text-slate-600 dark:text-slate-400">Contact</a>
+                
+                <div class="relative group py-2">
+                    <button id="dashboard-btn" class="flex items-center gap-1 hover:text-primary font-bold text-sm uppercase tracking-widest text-slate-600 dark:text-slate-400">
+                        Dashboard <i class="fa-solid fa-chevron-down text-[10px]"></i>
+                    </button>
+                    <div class="absolute hidden group-hover:block bg-white dark:bg-surface shadow-2xl rounded-xl mt-1 w-52 border border-slate-100 dark:border-slate-700 overflow-hidden">
+                        <a href="user.html" class="nav-link block px-5 py-3 hover:bg-rose-50 dark:hover:bg-rose-900/20 hover:text-primary transition text-sm font-bold">Client Portal</a>
+                    </div>
+                </div>
+            </div>
+            <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    // Get the current page filename (e.g., "about.html")
+    const currentPage = window.location.pathname.split("/").pop() || "index.html";
+
+    // Select all links in Desktop and Mobile menus
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    navLinks.forEach(link => {
+        const linkPage = link.getAttribute("href");
+
+        if (linkPage === currentPage) {
+            // Apply Active Styles
+            link.classList.remove("text-slate-600", "dark:text-slate-400"); // Remove default gray
+            link.classList.add("text-primary"); // Add Rose/Pink color
+            
+            // Optional: If the link is inside a dropdown, highlight the dropdown button too
+            if (link.closest('.group')) {
+                const dropBtn = link.closest('.group').querySelector('button');
+                if (dropBtn) dropBtn.classList.add('text-primary');
+            }
+        }
+    });
+});
+</script>
+
+            <div class="hidden lg:flex items-center xl:space-x-5 lg:space-x-3">
+                <button onclick="toggleTheme()" class="w-10 h-10 flex items-center justify-center rounded-full border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                    <i id="theme-icon" class="fa-solid fa-moon text-slate-500"></i>
+                </button>
+                <button onclick="toggleDirection()" class="text-[10px] font-black px-2 py-1 border-2 border-primary text-primary rounded uppercase">LTR</button>
+                
+                <a href="login.html" class="nav-link border-2 border-primary text-primary px-6 py-2.5 rounded-full font-bold text-sm uppercase tracking-widest hover:bg-primary hover:text-white transition-all active:scale-95">
+                    Login
+                </a>
+                
+                <a href="booknow.html" class="bg-primary text-white px-6 py-3 rounded-full font-bold text-sm uppercase tracking-widest hover:brightness-110 active:scale-95 transition shadow-xl shadow-primary/40">
+                    Book
+                </a>
+            </div>
+
+            <div class="lg:hidden flex items-center gap-3">
+                <button onclick="toggleTheme()" class="p-2 transition-colors hover:text-primary">
+                    <i class="fa-solid fa-circle-half-stroke text-primary text-lg"></i>
+                </button>
+                <button onclick="toggleMenu()" class="w-11 h-11 bg-primary text-white rounded-xl flex items-center justify-center shadow-lg shadow-primary/20 active:scale-90 transition-all">
+                    <i class="fa-solid fa-bars-staggered text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div id="mobile-menu" class="fixed inset-y-0 right-0 w-80 max-w-[85vw] bg-white dark:bg-darkBg shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out z-[100] p-8 lg:hidden">
+    
+    <div class="flex justify-between items-center mb-10">
+        <span class="font-black text-xl tracking-tighter text-primary">Menu</span>
+        <button onclick="toggleMenu()" class="w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 hover:text-primary transition">
+            <i class="fa-solid fa-xmark text-2xl"></i>
+        </button>
+    </div>
+
+    <div class="flex flex-col space-y-4">
+    <a href="index.html" class="nav-link text-lg font-bold hover:text-primary transition-colors border-b border-slate-50 dark:border-slate-800 pb-3">Home</a>
+    <a href="home2.html" class="nav-link text-lg font-bold hover:text-primary transition-colors border-b border-slate-50 dark:border-slate-800 pb-3">Home2</a>
+    <a href="about.html" class="nav-link text-lg font-bold hover:text-primary transition-colors border-b border-slate-50 dark:border-slate-800 pb-3">About</a>
+    <a href="service.html" class="nav-link text-lg font-bold hover:text-primary transition-colors border-b border-slate-50 dark:border-slate-800 pb-3">Services</a>
+    <a href="contact.html" class="nav-link text-lg font-bold hover:text-primary transition-colors border-b border-slate-50 dark:border-slate-800 pb-3">Contact</a>
+    
+    <div class="py-2">
+        <p class="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-2">Account</p>
+        <a href="user.html" class="nav-link text-lg font-bold flex items-center gap-2 hover:text-primary transition">
+            <i class="fa-solid fa-user-gear text-sm text-primary"></i> Profile Dashboard
+        </a>
+    </div>
+
+    <div class="flex items-center justify-between py-4 border-t border-slate-50 dark:border-slate-800">
+        <span class="text-sm font-bold uppercase tracking-widest text-slate-500">Direction</span>
+        <button onclick="toggleDirection()" class="font-black uppercase text-primary text-sm border-b-2 border-primary">LTR/RTL</button>
+    </div>
+
+    <div class="pt-4 space-y-4">
+        <a href="login.html" class="nav-link block text-center w-full py-4 rounded-2xl border-2 border-primary text-primary font-bold hover:bg-rose-50 dark:hover:bg-rose-950/20 transition">Login</a>
+        <a href="booknow.html" class="nav-link block text-center w-full py-4 rounded-2xl bg-primary text-white font-bold shadow-lg shadow-primary/30 hover:brightness-110 active:scale-95 transition">Book Now</a>
+    </div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    // 1. Get current filename (e.g., about.html)
+    const path = window.location.pathname;
+    const page = path.split("/").pop() || "index.html";
+
+    // 2. Select all links with the 'nav-link' class
+    const links = document.querySelectorAll(".nav-link");
+
+    links.forEach(link => {
+        // 3. Check if the href matches the current page
+        if (link.getAttribute("href") === page) {
+            // Apply Rose/Pink Color
+            link.classList.add("text-primary");
+            
+            // 4. Specifically for mobile menu: change border color for the active link
+            if (link.classList.contains('border-b')) {
+                link.classList.remove('border-slate-50', 'dark:border-slate-800');
+                link.classList.add('border-primary');
+            }
+
+            // 5. If it's the "Login" or "Book Now" button, we might want a different active style
+            if (link.classList.contains('bg-primary')) {
+                link.classList.add('ring-4', 'ring-rose-200', 'dark:ring-rose-900/40');
+            }
+        }
+    });
+});
+</script>
+</div>
+
+<div id="menu-overlay" onclick="toggleMenu()" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[90] hidden opacity-0 transition-opacity duration-300"></div>
+
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById('mobile-menu');
+        const overlay = document.getElementById('menu-overlay');
+        
+        const isOpen = menu.classList.contains('translate-x-0');
+        
+        if (!isOpen) {
+            // Open Menu
+            menu.classList.remove('translate-x-full');
+            menu.classList.add('translate-x-0');
+            overlay.classList.remove('hidden');
+            setTimeout(() => overlay.classList.add('opacity-100'), 10);
+            document.body.style.overflow = 'hidden';
+        } else {
+            // Close Menu
+            menu.classList.add('translate-x-full');
+            menu.classList.remove('translate-x-0');
+            overlay.classList.remove('opacity-100');
+            setTimeout(() => overlay.classList.add('hidden'), 300);
+            document.body.style.overflow = '';
+        }
+    }
+</script>
+<header id="pricing-hero" class="relative pt-32 pb-16 md:pt-48 md:pb-24 lg:pt-56 lg:pb-32 px-4 overflow-hidden bg-white dark:bg-darkBg">
+    
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full z-0 pointer-events-none">
+        <div class="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]" 
+             style="background-image: radial-gradient(#f43f5e 1px, transparent 1px); background-size: 40px 40px;">
+        </div>
+        <div class="absolute -top-24 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px]"></div>
+        <div class="absolute top-1/2 right-1/4 w-64 h-64 bg-rose-400/10 rounded-full blur-[100px]"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full pt-20">
+        <div class="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-16">
+            
+           <div class="reveal max-w-xl lg:w-1/2 flex flex-col items-center justify-center text-center group mx-auto">
+    <div class="relative max-w-md mx-auto">
+        <div class="absolute -inset-2 bg-gradient-to-r from-primary to-rose-300 rounded-[2rem] blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+        
+        <div class="relative rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white dark:border-darkBg bg-white/10 dark:bg-surface/10 backdrop-blur-md">
+            <img src="assets/agencies" 
+                 alt="Productive Business Session" 
+                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 group-hover:rotate-2">
+            <div class="absolute inset-0 bg-gradient-to-t from-darkBg/60 via-darkBg/10 to-transparent"></div>
+        </div>
+    </div>
+
+    <a href="#plans" class="mt-8 w-full md:w-auto mx-auto bg-primary text-white px-10 py-5 rounded-2xl font-black text-lg shadow-2xl shadow-primary/40 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3 group/btn">
+        View Flexible Plans
+        <i class="fa-solid fa-arrow-right group-hover/btn:translate-x-2 transition-transform"></i>
+    </a>
+</div>
+
+            <div class="reveal lg:w-1/2 lg:pl-8 text-center lg:text-left flex flex-col items-center lg:items-start">
+                
+                <div class="reveal delay-100 inline-flex items-center gap-2 px-4 py-2 mb-8 text-[10px] md:text-xs font-black tracking-[0.2em] text-primary uppercase bg-rose-50 dark:bg-rose-900/10 rounded-full border border-primary/20">
+                    <i class="fa-solid fa-shield-check"></i>
+                    100% Transparent Pricing • No Hidden Fees
+                </div>
+
+                <h1 class="reveal delay-200 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-[1.1] md:leading-[0.9] mb-8 tracking-tighter text-slate-900 dark:text-white">
+                    Invest in Your <br class="hidden md:block">
+                    <span class="text-primary transition-transform duration-300 inline-block hover:skew-x-2">Peace of Mind</span>
+                </h1>
+
+                <p class="reveal delay-300 text-base md:text-xl text-slate-500 dark:text-slate-400 font-medium leading-relaxed max-w-xl mb-12">
+                    Whether you're a solo founder or a scaling enterprise, our flexible plans are designed to give you back your most valuable asset: <span class="text-slate-900 dark:text-white">Time</span>.
+                </p>
+
+                <div class="reveal delay-400 flex flex-wrap justify-center lg:justify-start items-center gap-6 md:gap-x-12 opacity-60">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-check-circle text-primary"></i>
+                        <span class="text-xs font-black uppercase tracking-widest dark:text-slate-300">Cancel Anytime</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-check-circle text-primary"></i>
+                        <span class="text-xs font-black uppercase tracking-widest dark:text-slate-300">7-Day Free Trial</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-check-circle text-primary"></i>
+                        <span class="text-xs font-black uppercase tracking-widest dark:text-slate-300">NDA Protected</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-20 animate-bounce text-slate-300 dark:text-slate-700 text-center">
+            <i class="fa-solid fa-chevron-down text-2xl"></i>
+        </div>
+    </div>
+</section>
+<section id="pricing" class="py-24 bg-slate-50 dark:bg-darkBg relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <div class="text-center mb-12 reveal">
+            <h2 class="text-xs font-black tracking-[0.3em] text-primary uppercase mb-4">Investment Plans</h2>
+            <h3 class="text-3xl md:text-5xl font-black tracking-tighter text-slate-900 dark:text-white">
+                Simple Plans for <span class="text-primary italic">Every Scale</span>
+            </h3>
+            
+            <div class="mt-10 flex items-center justify-center gap-4">
+                <span class="text-sm font-bold text-slate-500">Monthly</span>
+                <button onclick="togglePricing()" id="price-toggle" class="relative w-16 h-8 bg-slate-200 dark:bg-slate-800 rounded-full transition-colors duration-300 focus:outline-none">
+                    <div id="toggle-circle" class="absolute top-1 left-1 w-6 h-6 bg-primary rounded-full transition-transform duration-300"></div>
+                </button>
+                <div class="flex items-center gap-2">
+                    <span class="text-sm font-bold text-slate-500">Yearly</span>
+                    <span class="px-2 py-1 bg-rose-100 dark:bg-rose-900/30 text-primary text-[10px] font-black rounded-md uppercase">Save 20%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8 items-center">
+            
+            <div class="reveal group bg-white dark:bg-surface p-8 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all duration-500">
+                <h4 class="text-xl font-black mb-2 dark:text-white">Starter</h4>
+                <p class="text-slate-400 text-sm mb-6">Perfect for solo founders.</p>
+                <div class="mb-8">
+                    <span class="text-4xl font-black dark:text-white">$</span>
+                    <span class="price-val text-6xl font-black tracking-tighter dark:text-white" data-monthly="49" data-yearly="39">49</span>
+                    <span class="text-slate-400 font-bold">/mo</span>
+                </div>
+                <ul class="space-y-4 mb-10 text-sm font-medium text-slate-600 dark:text-slate-400">
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-primary"></i> 20 Hours Support / mo</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-primary"></i> Email Management</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-primary"></i> Basic Data Entry</li>
+                    <li class="opacity-40 flex items-center gap-3"><i class="fa-solid fa-circle-xmark"></i> Dedicated Account Manager</li>
+                </ul>
+                <a href="#" class="block text-center w-full py-4 rounded-2xl border-2 border-slate-100 dark:border-slate-800 font-black text-xs tracking-widest uppercase hover:border-primary hover:text-primary transition-all">Get Started</a>
+            </div>
+
+            <div class="reveal delay-100 group relative bg-white dark:bg-surface p-10 rounded-[2.5rem] border-2 border-primary shadow-2xl shadow-primary/10 scale-105 z-20">
+                <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-primary text-white px-6 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest">
+                    Most Popular
+                </div>
+                <h4 class="text-xl font-black mb-2 dark:text-white">Professional</h4>
+                <p class="text-slate-400 text-sm mb-6">Best for growing teams.</p>
+                <div class="mb-8 text-primary">
+                    <span class="text-4xl font-black">$</span>
+                    <span class="price-val text-6xl font-black tracking-tighter" data-monthly="99" data-yearly="79">99</span>
+                    <span class="font-bold opacity-80">/mo</span>
+                </div>
+                <ul class="space-y-4 mb-10 text-sm font-medium text-slate-700 dark:text-slate-200">
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-primary"></i> 50 Hours Support / mo</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-primary"></i> Priority Chat Support</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-primary"></i> Social Media Scheduling</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-primary"></i> Dedicated Assistant</li>
+                </ul>
+                <a href="#" class="block text-center w-full py-4 rounded-2xl bg-primary text-white font-black text-xs tracking-widest uppercase hover:brightness-110 shadow-lg shadow-primary/30 transition-all">Choose Pro</a>
+            </div>
+
+            <div class="reveal delay-200 group bg-white dark:bg-surface p-8 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all duration-500">
+                <h4 class="text-xl font-black mb-2 dark:text-white">Enterprise</h4>
+                <p class="text-slate-400 text-sm mb-6">Full administrative scale.</p>
+                <div class="mb-8">
+                    <span class="text-4xl font-black dark:text-white">$</span>
+                    <span class="price-val text-6xl font-black tracking-tighter dark:text-white" data-monthly="199" data-yearly="159">199</span>
+                    <span class="text-slate-400 font-bold">/mo</span>
+                </div>
+                <ul class="space-y-4 mb-10 text-sm font-medium text-slate-600 dark:text-slate-400">
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-primary"></i> Unlimited Hours</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-primary"></i> Full Agency Access</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-primary"></i> Advanced Reporting</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-primary"></i> 24/7 Phone Support</li>
+                </ul>
+                <a href="#" class="block text-center w-full py-4 rounded-2xl border-2 border-slate-100 dark:border-slate-800 font-black text-xs tracking-widest uppercase hover:border-primary hover:text-primary transition-all">Contact Us</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script>
+    let isYearly = false;
+
+    function togglePricing() {
+        isYearly = !isYearly;
+        const circle = document.getElementById('toggle-circle');
+        const priceVals = document.querySelectorAll('.price-val');
+        
+        // Update Toggle UI
+        if (isYearly) {
+            circle.style.transform = 'translateX(32px)';
+        } else {
+            circle.style.transform = 'translateX(0px)';
+        }
+
+        // Update Prices with animation
+        priceVals.forEach(val => {
+            val.style.opacity = '0';
+            setTimeout(() => {
+                val.innerText = isYearly ? val.getAttribute('data-yearly') : val.getAttribute('data-monthly');
+                val.style.opacity = '1';
+            }, 150);
+        });
+    }
+</script>
+<section id="faq" class="py-24 bg-slate-50 dark:bg-darkBg relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <div class="flex flex-col lg:flex-row gap-16">
+            
+            <div class="lg:w-2/5 reveal">
+                <h2 class="text-xs font-black tracking-[0.3em] text-primary uppercase mb-4">Common Questions</h2>
+                <h3 class="text-3xl md:text-5xl font-black tracking-tighter text-slate-900 dark:text-white leading-tight mb-8">
+                    Everything You <br class="hidden md:block"> Need to <span class="text-primary ">Know</span>
+                </h3>
+                
+                <div class="bg-white dark:bg-surface p-8 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-200/50 dark:shadow-none">
+                    <!-- <div class="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-comments-question text-xl"></i>
+                    </div> -->
+                    <h4 class="text-xl font-black mb-2 dark:text-white">Still have questions?</h4>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 font-medium">Can't find the answer you're looking for? Please chat to our friendly team.</p>
+                    <a href="contact.html" class="inline-block bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-8 py-4 rounded-2xl font-black text-xs uppercase tracking-widest hover:scale-105 active:scale-95 transition-all">Get in Touch</a>
+                </div>
+            </div>
+
+            <div class="lg:w-3/5 space-y-4">
+                
+                <div class="reveal faq-item group bg-white dark:bg-surface rounded-3xl border border-slate-100 dark:border-slate-800 overflow-hidden transition-all duration-300">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 md:p-8 text-left focus:outline-none">
+                        <span class="text-lg font-black text-slate-900 dark:text-white pr-8 group-hover:text-primary transition-colors">How quickly can I start with an assistant?</span>
+                        <div class="w-8 h-8 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-400 group-hover:border-primary group-hover:text-primary transition-all rotate-icon">
+                            <i class="fa-solid fa-plus text-xs"></i>
+                        </div>
+                    </button>
+                    <div class="faq-answer max-h-0 transition-all duration-500 ease-in-out">
+                        <div class="p-6 md:p-8 pt-0 text-slate-500 dark:text-slate-400 font-medium leading-relaxed">
+                            Most clients are matched and start delegating tasks within 24 to 48 hours of their initial discovery call. Our streamlined onboarding process ensures you don't lose any momentum.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal delay-100 faq-item group bg-white dark:bg-surface rounded-3xl border border-slate-100 dark:border-slate-800 overflow-hidden transition-all duration-300">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 md:p-8 text-left focus:outline-none">
+                        <span class="text-lg font-black text-slate-900 dark:text-white pr-8 group-hover:text-primary transition-colors">Is there a long-term contract?</span>
+                        <div class="w-8 h-8 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-400 group-hover:border-primary group-hover:text-primary transition-all rotate-icon">
+                            <i class="fa-solid fa-plus text-xs"></i>
+                        </div>
+                    </button>
+                    <div class="faq-answer max-h-0 transition-all duration-500 ease-in-out">
+                        <div class="p-6 md:p-8 pt-0 text-slate-500 dark:text-slate-400 font-medium leading-relaxed">
+                            No. We believe in earning your business every month. Our plans are month-to-month, and you can scale up, down, or cancel at any time with a 14-day notice.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal delay-200 faq-item group bg-white dark:bg-surface rounded-3xl border border-slate-100 dark:border-slate-800 overflow-hidden transition-all duration-300">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 md:p-8 text-left focus:outline-none">
+                        <span class="text-lg font-black text-slate-900 dark:text-white pr-8 group-hover:text-primary transition-colors">How do you handle data security?</span>
+                        <div class="w-8 h-8 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-400 group-hover:border-primary group-hover:text-primary transition-all rotate-icon">
+                            <i class="fa-solid fa-plus text-xs"></i>
+                        </div>
+                    </button>
+                    <div class="faq-answer max-h-0 transition-all duration-500 ease-in-out">
+                        <div class="p-6 md:p-8 pt-0 text-slate-500 dark:text-slate-400 font-medium leading-relaxed">
+                            Security is our top priority. All assistants sign comprehensive NDAs, use encrypted password managers (like LastPass or 1Password), and work on secure, monitored networks.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal delay-300 faq-item group bg-white dark:bg-surface rounded-3xl border border-slate-100 dark:border-slate-800 overflow-hidden transition-all duration-300">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 md:p-8 text-left focus:outline-none">
+                        <span class="text-lg font-black text-slate-900 dark:text-white pr-8 group-hover:text-primary transition-colors">What tools can my assistant use?</span>
+                        <div class="w-8 h-8 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-400 group-hover:border-primary group-hover:text-primary transition-all rotate-icon">
+                            <i class="fa-solid fa-plus text-xs"></i>
+                        </div>
+                    </button>
+                    <div class="faq-answer max-h-0 transition-all duration-500 ease-in-out">
+                        <div class="p-6 md:p-8 pt-0 text-slate-500 dark:text-slate-400 font-medium leading-relaxed">
+                            Our VAs are tech-savvy and proficient in Slack, Trello, Asana, G-Suite, Microsoft 365, CRM tools (HubSpot/Salesforce), and various social media management platforms.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function toggleFaq(button) {
+        const item = button.parentElement;
+        const answer = button.nextElementSibling;
+        const icon = button.querySelector('.rotate-icon');
+        
+        // Close all other FAQs
+        const allAnswers = document.querySelectorAll('.faq-answer');
+        const allIcons = document.querySelectorAll('.rotate-icon');
+        const allItems = document.querySelectorAll('.faq-item');
+        
+        allAnswers.forEach((ans, i) => {
+            if (ans !== answer) {
+                ans.style.maxHeight = null;
+                allIcons[i].classList.remove('rotate-45', 'bg-primary', 'text-white');
+                allIcons[i].innerHTML = '<i class="fa-solid fa-plus text-xs"></i>';
+                allItems[i].classList.remove('border-primary/50', 'ring-4', 'ring-primary/5');
+            }
+        });
+
+        // Toggle current FAQ
+        if (answer.style.maxHeight) {
+            answer.style.maxHeight = null;
+            icon.classList.remove('rotate-45', 'bg-primary', 'text-white');
+            icon.innerHTML = '<i class="fa-solid fa-plus text-xs"></i>';
+            item.classList.remove('border-primary/50', 'ring-4', 'ring-primary/5');
+        } else {
+            answer.style.maxHeight = answer.scrollHeight + "px";
+            icon.classList.add('rotate-45', 'bg-primary', 'text-white');
+            icon.innerHTML = '<i class="fa-solid fa-xmark text-xs"></i>';
+            item.classList.add('border-primary/50', 'ring-4', 'ring-primary/5');
+        }
+    }
+</script>
+
+    <footer class="bg-white dark:bg-darkBg pt-24 pb-12 border-t border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
+                <div class="space-y-6">
+                    <a href="index.html">
+                        <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white">
+                            <i class="fa-solid fa-briefcase text-xs"></i>
+                        </div>
+                        <span class="font-black text-xl md:text-2xl tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-primary to-rose-400">ASSIST</span>
+                    </div>
+                    </a>
+                    
+                    <p class="text-slate-500 dark:text-slate-400 font-medium leading-relaxed">
+                        Redefining administrative support for the modern entrepreneur. Fast, reliable, and expert-led.
+                    </p>
+                   <div class="flex gap-4">
+    <a href="#" class="w-11 h-11 rounded-full bg-rose-50 dark:bg-slate-800 flex items-center justify-center text-primary dark:text-rose-400 hover:bg-primary hover:text-white transition-all shadow-sm border border-rose-100 dark:border-slate-700">
+        <i class="fa-brands fa-facebook text-lg"></i>
+    </a>
+
+    <a href="#" class="w-11 h-11 rounded-full bg-rose-50 dark:bg-slate-800 flex items-center justify-center text-primary dark:text-rose-400 hover:bg-primary hover:text-white transition-all shadow-sm border border-rose-100 dark:border-slate-700">
+        <i class="fa-brands fa-linkedin-in text-lg"></i>
+    </a>
+
+    <a href="#" class="w-11 h-11 rounded-full bg-rose-50 dark:bg-slate-800 flex items-center justify-center text-primary dark:text-rose-400 hover:bg-primary hover:text-white transition-all shadow-sm border border-rose-100 dark:border-slate-700">
+        <i class="fa-brands fa-instagram text-lg"></i>
+    </a>
+</div>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-black uppercase tracking-[0.3em] mb-8 text-primary">Navigation</h4>
+                    <ul class="space-y-4 font-bold text-sm">
+                        <li><a href="index.html" class="hover:text-primary transition">Home</a></li>
+                        <li><a href="about.html" class="hover:text-primary transition">About Us</a></li>
+                        <li><a href="service.html" class="hover:text-primary transition">Services</a></li>
+                        <li><a href="contact.html" class="hover:text-primary transition">Contact</a></li>
+                        <li><a href="booknow.html" class="text-primary hover:brightness-110 underline decoration-2 underline-offset-8">Book Now</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-black uppercase tracking-[0.3em] mb-8 text-primary">Resources</h4>
+                    <ul class="space-y-4 font-bold text-sm">
+                         <li><a href="home2.html" class="hover:text-primary transition">Home2</a></li>
+                        <li><a href="comingsoon.html" class="hover:text-primary transition">Coming Soon</a></li>
+                        <li><a href="404.html" class="hover:text-primary transition">404 Error</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Terms</a></li>
+                        <li><a href="pricing.html" class="hover:text-primary transition">Pricing</a></li>
+                    </ul>
+                </div>
+
+                <div class="bg-rose-50 dark:bg-surface p-8 rounded-3xl border border-rose-100 dark:border-slate-700">
+                    <h4 class="font-black mb-4">Newsletter</h4>
+                    <p class="text-xs text-slate-500 mb-6">Stay ahead with the latest productivity hacks.</p>
+                    <form class="space-y-3">
+                        <input type="email" placeholder="Your Email" class="w-full px-5 py-3 rounded-xl bg-white dark:bg-darkBg border border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-primary outline-none text-sm">
+                        <button class="w-full bg-primary text-white py-3 rounded-xl font-bold shadow-lg shadow-primary/20 hover:brightness-110 transition">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="text-center pt-12 border-t border-slate-100 dark:border-slate-800 text-slate-400 text-[10px] font-black tracking-widest uppercase">
+                &copy; 2026 Assist. Designed for Excellence.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const html = document.getElementById('html-tag');
+        const themeIcon = document.getElementById('theme-icon');
+
+        if (localStorage.getItem('theme') === 'dark') {
+            html.classList.add('dark');
+            themeIcon?.classList.replace('fa-moon', 'fa-sun');
+        }
+        if (localStorage.getItem('dir') === 'rtl') {
+            html.setAttribute('dir', 'rtl');
+        }
+
+        function toggleTheme() {
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                themeIcon?.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark');
+                themeIcon?.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        function toggleDirection() {
+            const currentDir = html.getAttribute('dir');
+            const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+            html.setAttribute('dir', newDir);
+            localStorage.setItem('dir', newDir);
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('translate-x-full');
+        }
+    </script>
+</body>
+</html>

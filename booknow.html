@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="html-tag">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%23f43f5e' d='M176 56V96H336V56c0-4.4-3.6-8-8-8H184c-4.4 0-8 3.6-8 8zM128 96V56c0-30.9 25.1-56 56-56H328c30.9 0 56 25.1 56 56V96h32c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V160c0-35.3 28.7-64 64-64h32z'/></svg>">
+    <title>Assist | Virtual Assistant & Administrative Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#f43f5e', // Rose/Pink
+                        secondary: '#475569', // Slate
+                        darkBg: '#0f1117',
+                        surface: '#1e293b',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .dropdown:hover .dropdown-menu { display: block; }
+        .mobile-menu { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .glass { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        ::selection { background-color: #f43f5e; color: white; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-darkBg dark:text-slate-100 transition-colors duration-300 font-sans">
+
+<nav class="fixed w-full z-50 bg-white/70 dark:bg-darkBg/70 glass border-b border-slate-200 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
+            <a href="index.html" class="flex-shrink-0">
+                <div class="flex items-center gap-2 md:gap-3">
+                    <div class="w-10 h-10 md:w-11 md:h-11 bg-primary rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary/30 rotate-3 transition-transform hover:rotate-0">
+                        <i class="fa-solid fa-briefcase text-lg"></i>
+                    </div>
+                    <span class="font-black text-xl md:text-2xl tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-primary to-rose-400">
+                        ASSIST
+                    </span>
+                </div>
+            </a>
+
+            <div class="hidden lg:flex xl:space-x-8 lg:space-x-4 items-center">
+                <a href="index.html" class="nav-link hover:text-primary transition font-bold text-sm uppercase tracking-widest text-slate-600 dark:text-slate-400">Home</a>
+                <a href="home2.html" class="nav-link hover:text-primary transition font-bold text-sm uppercase tracking-widest text-slate-600 dark:text-slate-400">Home2</a>
+                <a href="about.html" class="nav-link hover:text-primary transition font-bold text-sm uppercase tracking-widest text-slate-600 dark:text-slate-400">About</a>
+                <a href="service.html" class="nav-link hover:text-primary transition font-bold text-sm uppercase tracking-widest text-slate-600 dark:text-slate-400">Services</a>
+                <a href="contact.html" class="nav-link hover:text-primary transition font-bold text-sm uppercase tracking-widest text-slate-600 dark:text-slate-400">Contact</a>
+                
+                <div class="relative group py-2">
+                    <button id="dashboard-btn" class="flex items-center gap-1 hover:text-primary font-bold text-sm uppercase tracking-widest text-slate-600 dark:text-slate-400">
+                        Dashboard <i class="fa-solid fa-chevron-down text-[10px]"></i>
+                    </button>
+                    <div class="absolute hidden group-hover:block bg-white dark:bg-surface shadow-2xl rounded-xl mt-1 w-52 border border-slate-100 dark:border-slate-700 overflow-hidden">
+                        <a href="user.html" class="nav-link block px-5 py-3 hover:bg-rose-50 dark:hover:bg-rose-900/20 hover:text-primary transition text-sm font-bold">Client Portal</a>
+                    </div>
+                </div>
+            </div>
+            <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    // Get the current page filename (e.g., "about.html")
+    const currentPage = window.location.pathname.split("/").pop() || "index.html";
+
+    // Select all links in Desktop and Mobile menus
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    navLinks.forEach(link => {
+        const linkPage = link.getAttribute("href");
+
+        if (linkPage === currentPage) {
+            // Apply Active Styles
+            link.classList.remove("text-slate-600", "dark:text-slate-400"); // Remove default gray
+            link.classList.add("text-primary"); // Add Rose/Pink color
+            
+            // Optional: If the link is inside a dropdown, highlight the dropdown button too
+            if (link.closest('.group')) {
+                const dropBtn = link.closest('.group').querySelector('button');
+                if (dropBtn) dropBtn.classList.add('text-primary');
+            }
+        }
+    });
+});
+</script>
+
+            <div class="hidden lg:flex items-center xl:space-x-5 lg:space-x-3">
+                <button onclick="toggleTheme()" class="w-10 h-10 flex items-center justify-center rounded-full border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                    <i id="theme-icon" class="fa-solid fa-moon text-slate-500"></i>
+                </button>
+                <button onclick="toggleDirection()" class="text-[10px] font-black px-2 py-1 border-2 border-primary text-primary rounded uppercase">LTR</button>
+                
+                <a href="login.html" class="nav-link border-2 border-primary text-primary px-6 py-2.5 rounded-full font-bold text-sm uppercase tracking-widest hover:bg-primary hover:text-white transition-all active:scale-95">
+                    Login
+                </a>
+                
+                <a href="booknow.html" class="bg-primary text-white px-6 py-3 rounded-full font-bold text-sm uppercase tracking-widest hover:brightness-110 active:scale-95 transition shadow-xl shadow-primary/40">
+                    Book
+                </a>
+            </div>
+
+            <div class="lg:hidden flex items-center gap-3">
+                <button onclick="toggleTheme()" class="p-2 transition-colors hover:text-primary">
+                    <i class="fa-solid fa-circle-half-stroke text-primary text-lg"></i>
+                </button>
+                <button onclick="toggleMenu()" class="w-11 h-11 bg-primary text-white rounded-xl flex items-center justify-center shadow-lg shadow-primary/20 active:scale-90 transition-all">
+                    <i class="fa-solid fa-bars-staggered text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div id="mobile-menu" class="fixed inset-y-0 right-0 w-80 max-w-[85vw] bg-white dark:bg-darkBg shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out z-[100] p-8 lg:hidden">
+    
+    <div class="flex justify-between items-center mb-10">
+        <span class="font-black text-xl tracking-tighter text-primary">Menu</span>
+        <button onclick="toggleMenu()" class="w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 hover:text-primary transition">
+            <i class="fa-solid fa-xmark text-2xl"></i>
+        </button>
+    </div>
+
+    <div class="flex flex-col space-y-4">
+    <a href="index.html" class="nav-link text-lg font-bold hover:text-primary transition-colors border-b border-slate-50 dark:border-slate-800 pb-3">Home</a>
+    <a href="home2.html" class="nav-link text-lg font-bold hover:text-primary transition-colors border-b border-slate-50 dark:border-slate-800 pb-3">Home2</a>
+    <a href="about.html" class="nav-link text-lg font-bold hover:text-primary transition-colors border-b border-slate-50 dark:border-slate-800 pb-3">About</a>
+    <a href="service.html" class="nav-link text-lg font-bold hover:text-primary transition-colors border-b border-slate-50 dark:border-slate-800 pb-3">Services</a>
+    <a href="contact.html" class="nav-link text-lg font-bold hover:text-primary transition-colors border-b border-slate-50 dark:border-slate-800 pb-3">Contact</a>
+    
+    <div class="py-2">
+        <p class="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-2">Account</p>
+        <a href="user.html" class="nav-link text-lg font-bold flex items-center gap-2 hover:text-primary transition">
+            <i class="fa-solid fa-user-gear text-sm text-primary"></i> Profile Dashboard
+        </a>
+    </div>
+
+    <div class="flex items-center justify-between py-4 border-t border-slate-50 dark:border-slate-800">
+        <span class="text-sm font-bold uppercase tracking-widest text-slate-500">Direction</span>
+        <button onclick="toggleDirection()" class="font-black uppercase text-primary text-sm border-b-2 border-primary">LTR/RTL</button>
+    </div>
+
+    <div class="pt-4 space-y-4">
+        <a href="login.html" class="nav-link block text-center w-full py-4 rounded-2xl border-2 border-primary text-primary font-bold hover:bg-rose-50 dark:hover:bg-rose-950/20 transition">Login</a>
+        <a href="booknow.html" class="nav-link block text-center w-full py-4 rounded-2xl bg-primary text-white font-bold shadow-lg shadow-primary/30 hover:brightness-110 active:scale-95 transition">Book Now</a>
+    </div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    // 1. Get current filename (e.g., about.html)
+    const path = window.location.pathname;
+    const page = path.split("/").pop() || "index.html";
+
+    // 2. Select all links with the 'nav-link' class
+    const links = document.querySelectorAll(".nav-link");
+
+    links.forEach(link => {
+        // 3. Check if the href matches the current page
+        if (link.getAttribute("href") === page) {
+            // Apply Rose/Pink Color
+            link.classList.add("text-primary");
+            
+            // 4. Specifically for mobile menu: change border color for the active link
+            if (link.classList.contains('border-b')) {
+                link.classList.remove('border-slate-50', 'dark:border-slate-800');
+                link.classList.add('border-primary');
+            }
+
+            // 5. If it's the "Login" or "Book Now" button, we might want a different active style
+            if (link.classList.contains('bg-primary')) {
+                link.classList.add('ring-4', 'ring-rose-200', 'dark:ring-rose-900/40');
+            }
+        }
+    });
+});
+</script>
+</div>
+
+<div id="menu-overlay" onclick="toggleMenu()" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[90] hidden opacity-0 transition-opacity duration-300"></div>
+
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById('mobile-menu');
+        const overlay = document.getElementById('menu-overlay');
+        
+        const isOpen = menu.classList.contains('translate-x-0');
+        
+        if (!isOpen) {
+            // Open Menu
+            menu.classList.remove('translate-x-full');
+            menu.classList.add('translate-x-0');
+            overlay.classList.remove('hidden');
+            setTimeout(() => overlay.classList.add('opacity-100'), 10);
+            document.body.style.overflow = 'hidden';
+        } else {
+            // Close Menu
+            menu.classList.add('translate-x-full');
+            menu.classList.remove('translate-x-0');
+            overlay.classList.remove('opacity-100');
+            setTimeout(() => overlay.classList.add('hidden'), 300);
+            document.body.style.overflow = '';
+        }
+    }
+</script>
+
+<section id="booking" class="py-24 bg-white dark:bg-darkBg relative overflow-hidden">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <div class="mb-12">
+            <div class="flex justify-between items-center relative">
+                <div class="absolute h-1 bg-slate-100 dark:bg-slate-800 w-full top-1/2 -translate-y-1/2 z-0"></div>
+                <div id="progress-bar" class="absolute h-1 bg-primary w-0 top-1/2 -translate-y-1/2 z-0 transition-all duration-500"></div>
+                
+                <div class="step-dot w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold z-10">1</div>
+                <div class="step-dot w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-500 flex items-center justify-center font-bold z-10">2</div>
+                <div class="step-dot w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-500 flex items-center justify-center font-bold z-10">3</div>
+                <div class="step-dot w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-500 flex items-center justify-center font-bold z-10">4</div>
+                <div class="step-dot w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-500 flex items-center justify-center font-bold z-10">5</div>
+            </div>
+            <div class="flex justify-between mt-4 text-[10px] font-black uppercase tracking-widest text-slate-400">
+                <span>Service</span>
+                <span>Needs</span>
+                <span>Plan</span>
+                <span>Schedule</span>
+                <span>Details</span>
+            </div>
+        </div>
+
+        <div class="bg-slate-50 dark:bg-surface rounded-[3rem] p-8 md:p-12 border border-slate-100 dark:border-slate-800 shadow-2xl relative">
+            
+            <form id="booking-form">
+                
+                <div class="step-content block" id="step-1">
+                    <h3 class="text-2xl md:text-3xl font-black mb-8 dark:text-white">What do you need help with?</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <label class="relative group cursor-pointer">
+                            <input type="radio" name="service" value="Admin Support" class="peer sr-only" checked>
+                            <div class="p-6 bg-white dark:bg-darkBg border-2 border-transparent rounded-2xl peer-checked:border-primary peer-checked:bg-rose-50 dark:peer-checked:bg-rose-900/10 transition-all">
+                                <i class="fa-solid fa-user-tie text-2xl text-primary mb-3"></i>
+                                <p class="font-black dark:text-white">Admin Support</p>
+                            </div>
+                        </label>
+                        <label class="relative group cursor-pointer">
+                            <input type="radio" name="service" value="Customer Service" class="peer sr-only">
+                            <div class="p-6 bg-white dark:bg-darkBg border-2 border-transparent rounded-2xl peer-checked:border-primary peer-checked:bg-rose-50 dark:peer-checked:bg-rose-900/10 transition-all">
+                                <i class="fa-solid fa-headset text-2xl text-primary mb-3"></i>
+                                <p class="font-black dark:text-white">Customer Service</p>
+                            </div>
+                        </label>
+                        <label class="relative group cursor-pointer">
+                            <input type="radio" name="service" value="Social Media" class="peer sr-only">
+                            <div class="p-6 bg-white dark:bg-darkBg border-2 border-transparent rounded-2xl peer-checked:border-primary peer-checked:bg-rose-50 dark:peer-checked:bg-rose-900/10 transition-all">
+                                <i class="fa-solid fa-share-nodes text-2xl text-primary mb-3"></i>
+                                <p class="font-black dark:text-white">Social Media</p>
+                            </div>
+                        </label>
+                        <label class="relative group cursor-pointer">
+                            <input type="radio" name="service" value="Data Entry" class="peer sr-only">
+                            <div class="p-6 bg-white dark:bg-darkBg border-2 border-transparent rounded-2xl peer-checked:border-primary peer-checked:bg-rose-50 dark:peer-checked:bg-rose-900/10 transition-all">
+                                <i class="fa-solid fa-database text-2xl text-primary mb-3"></i>
+                                <p class="font-black dark:text-white">Data Entry</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="step-content hidden" id="step-2">
+                    <h3 class="text-2xl md:text-3xl font-black mb-8 dark:text-white">Describe Your Needs</h3>
+                    <textarea placeholder="What tasks do you need help with?" class="w-full h-40 p-6 bg-white dark:bg-darkBg rounded-2xl border border-slate-200 dark:border-slate-800 focus:ring-2 focus:ring-primary/20 outline-none transition-all mb-6"></textarea>
+                    <div class="flex items-center justify-center w-full">
+                        <label class="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-2xl cursor-pointer hover:bg-slate-100 dark:hover:bg-darkBg transition">
+                            <i class="fa-solid fa-cloud-arrow-up text-2xl text-slate-400 mb-2"></i>
+                            <span class="text-xs font-bold text-slate-500 uppercase">Upload files or screenshots</span>
+                            <input type="file" class="hidden">
+                        </label>
+                    </div>
+                </div>
+
+                <div class="step-content hidden" id="step-3">
+                    <h3 class="text-2xl md:text-3xl font-black mb-8 dark:text-white">Choose Your Plan</h3>
+                    <div class="space-y-4">
+                        <label class="flex items-center justify-between p-6 bg-white dark:bg-darkBg border-2 border-transparent rounded-2xl cursor-pointer has-[:checked]:border-primary transition-all">
+                            <div class="flex items-center gap-4">
+                                <input type="radio" name="plan" value="Hourly" class="accent-primary w-5 h-5" checked>
+                                <span class="font-black dark:text-white">Hourly Plan</span>
+                            </div>
+                            <span class="font-black text-primary">$25/hr</span>
+                        </label>
+                        <label class="flex items-center justify-between p-6 bg-white dark:bg-darkBg border-2 border-transparent rounded-2xl cursor-pointer has-[:checked]:border-primary transition-all">
+                            <div class="flex items-center gap-4">
+                                <input type="radio" name="plan" value="Part-Time" class="accent-primary w-5 h-5">
+                                <span class="font-black dark:text-white">Part-Time (20 hrs)</span>
+                            </div>
+                            <span class="font-black text-primary">$450/week</span>
+                        </label>
+                        <label class="flex items-center justify-between p-6 bg-white dark:bg-darkBg border-2 border-transparent rounded-2xl cursor-pointer has-[:checked]:border-primary transition-all">
+                            <div class="flex items-center gap-4">
+                                <input type="radio" name="plan" value="Full-Time" class="accent-primary w-5 h-5">
+                                <span class="font-black dark:text-white">Full-Time (40 hrs)</span>
+                            </div>
+                            <span class="font-black text-primary">$800/week</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="step-content hidden" id="step-4">
+                    <h3 class="text-2xl md:text-3xl font-black mb-8 dark:text-white">Select Onboarding Date</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <input type="date" class="p-4 bg-white dark:bg-darkBg rounded-xl border border-slate-200 dark:border-slate-800 font-bold dark:text-white">
+                        <select class="p-4 bg-white dark:bg-darkBg rounded-xl border border-slate-200 dark:border-slate-800 font-bold dark:text-white">
+                            <option>09:00 AM</option>
+                            <option>11:00 AM</option>
+                            <option>02:00 PM</option>
+                            <option>04:00 PM</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="step-content hidden" id="step-5">
+                    <h3 class="text-2xl md:text-3xl font-black mb-8 dark:text-white">Review & Confirm</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                        <input type="text" placeholder="Your Name" class="p-4 bg-white dark:bg-darkBg rounded-xl border border-slate-200 dark:border-slate-800 font-bold dark:text-white">
+                        <input type="email" placeholder="Email Address" class="p-4 bg-white dark:bg-darkBg rounded-xl border border-slate-200 dark:border-slate-800 font-bold dark:text-white">
+                    </div>
+                    <div class="p-6 bg-primary text-white rounded-[2rem] shadow-xl shadow-primary/30">
+                        <p class="text-xs font-black uppercase tracking-widest opacity-80 mb-4">Booking Summary</p>
+                        <div class="flex justify-between mb-2">
+                            <span class="font-bold">Service:</span>
+                            <span id="summary-service" class="font-black">Admin Support</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="font-bold">Plan:</span>
+                            <span id="summary-plan" class="font-black">Hourly Plan</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-12 flex justify-between">
+                    <button type="button" id="prevBtn" onclick="nextPrev(-1)" class="px-8 py-4 rounded-xl font-black uppercase text-xs tracking-widest text-slate-400 hover:text-primary transition-colors hidden">Previous</button>
+                    <button type="button" id="nextBtn" onclick="nextPrev(1)" class="ml-auto px-10 py-4 bg-primary text-white rounded-xl font-black uppercase text-xs tracking-widest shadow-xl shadow-primary/30 hover:brightness-110 active:scale-95 transition-all">Next Step</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<script>
+    let currentStep = 0;
+    const steps = document.getElementsByClassName("step-content");
+    const dots = document.getElementsByClassName("step-dot");
+    const progressBar = document.getElementById("progress-bar");
+
+    function showStep(n) {
+        steps[n].style.display = "block";
+        if (n == 0) {
+            document.getElementById("prevBtn").classList.add("hidden");
+        } else {
+            document.getElementById("prevBtn").classList.remove("hidden");
+        }
+        if (n == (steps.length - 1)) {
+            document.getElementById("nextBtn").innerHTML = "Confirm Booking";
+        } else {
+            document.getElementById("nextBtn").innerHTML = "Next Step";
+        }
+        updateProgress(n);
+    }
+
+    function nextPrev(n) {
+        if (n == 1 && !validateForm()) return false;
+        steps[currentStep].style.display = "none";
+        currentStep = currentStep + n;
+        if (currentStep >= steps.length) {
+            alert("Booking Confirmed!"); // Real-world: Form Submission
+            return false;
+        }
+        showStep(currentStep);
+    }
+
+    function updateProgress(n) {
+        let percent = (n / (steps.length - 1)) * 100;
+        progressBar.style.width = percent + "%";
+        for (let i = 0; i < dots.length; i++) {
+            if (i <= n) {
+                dots[i].classList.add("bg-primary", "text-white");
+                dots[i].classList.remove("bg-slate-200", "dark:bg-slate-800", "text-slate-500");
+            } else {
+                dots[i].classList.remove("bg-primary", "text-white");
+                dots[i].classList.add("bg-slate-200", "dark:bg-slate-800", "text-slate-500");
+            }
+        }
+    }
+
+    function validateForm() { return true; } // Basic bypass for demo
+
+    showStep(currentStep);
+</script>
+      <footer class="bg-white dark:bg-darkBg pt-24 pb-12 border-t border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
+                <div class="space-y-6">
+                    <a href="index.html">
+                        <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white">
+                            <i class="fa-solid fa-briefcase text-xs"></i>
+                        </div>
+                        <span class="font-black text-xl md:text-2xl tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-primary to-rose-400">ASSIST</span>
+                    </div>
+                    </a>
+                    
+                    <p class="text-slate-500 dark:text-slate-400 font-medium leading-relaxed">
+                        Redefining administrative support for the modern entrepreneur. Fast, reliable, and expert-led.
+                    </p>
+                   <div class="flex gap-4">
+    <a href="#" class="w-11 h-11 rounded-full bg-rose-50 dark:bg-slate-800 flex items-center justify-center text-primary dark:text-rose-400 hover:bg-primary hover:text-white transition-all shadow-sm border border-rose-100 dark:border-slate-700">
+        <i class="fa-brands fa-facebook text-lg"></i>
+    </a>
+
+    <a href="#" class="w-11 h-11 rounded-full bg-rose-50 dark:bg-slate-800 flex items-center justify-center text-primary dark:text-rose-400 hover:bg-primary hover:text-white transition-all shadow-sm border border-rose-100 dark:border-slate-700">
+        <i class="fa-brands fa-linkedin-in text-lg"></i>
+    </a>
+
+    <a href="#" class="w-11 h-11 rounded-full bg-rose-50 dark:bg-slate-800 flex items-center justify-center text-primary dark:text-rose-400 hover:bg-primary hover:text-white transition-all shadow-sm border border-rose-100 dark:border-slate-700">
+        <i class="fa-brands fa-instagram text-lg"></i>
+    </a>
+</div>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-black uppercase tracking-[0.3em] mb-8 text-primary">Navigation</h4>
+                    <ul class="space-y-4 font-bold text-sm">
+                        <li><a href="index.html" class="hover:text-primary transition">Home</a></li>
+                        <li><a href="about.html" class="hover:text-primary transition">About Us</a></li>
+                        <li><a href="service.html" class="hover:text-primary transition">Services</a></li>
+                        <li><a href="contact.html" class="hover:text-primary transition">Contact</a></li>
+                        <li><a href="booknow.html" class="text-primary hover:brightness-110 underline decoration-2 underline-offset-8">Book Now</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-black uppercase tracking-[0.3em] mb-8 text-primary">Resources</h4>
+                    <ul class="space-y-4 font-bold text-sm">
+                         <li><a href="home2.html" class="hover:text-primary transition">Home2</a></li>
+                        <li><a href="comingsoon.html" class="hover:text-primary transition">Coming Soon</a></li>
+                        <li><a href="404.html" class="hover:text-primary transition">404 Error</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Terms</a></li>
+                        <li><a href="pricing.html" class="hover:text-primary transition">Pricing</a></li>
+                    </ul>
+                </div>
+
+                <div class="bg-rose-50 dark:bg-surface p-8 rounded-3xl border border-rose-100 dark:border-slate-700">
+                    <h4 class="font-black mb-4">Newsletter</h4>
+                    <p class="text-xs text-slate-500 mb-6">Stay ahead with the latest productivity hacks.</p>
+                    <form class="space-y-3">
+                        <input type="email" placeholder="Your Email" class="w-full px-5 py-3 rounded-xl bg-white dark:bg-darkBg border border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-primary outline-none text-sm">
+                        <button class="w-full bg-primary text-white py-3 rounded-xl font-bold shadow-lg shadow-primary/20 hover:brightness-110 transition">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="text-center pt-12 border-t border-slate-100 dark:border-slate-800 text-slate-400 text-[10px] font-black tracking-widest uppercase">
+                &copy; 2026 Assist. Designed for Excellence.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const html = document.getElementById('html-tag');
+        const themeIcon = document.getElementById('theme-icon');
+
+        if (localStorage.getItem('theme') === 'dark') {
+            html.classList.add('dark');
+            themeIcon?.classList.replace('fa-moon', 'fa-sun');
+        }
+        if (localStorage.getItem('dir') === 'rtl') {
+            html.setAttribute('dir', 'rtl');
+        }
+
+        function toggleTheme() {
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                themeIcon?.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark');
+                themeIcon?.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        function toggleDirection() {
+            const currentDir = html.getAttribute('dir');
+            const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+            html.setAttribute('dir', newDir);
+            localStorage.setItem('dir', newDir);
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('translate-x-full');
+        }
+    </script>
+</body>
+</html>

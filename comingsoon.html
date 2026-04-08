@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="html-tag">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%23f43f5e' d='M176 56V96H336V56c0-4.4-3.6-8-8-8H184c-4.4 0-8 3.6-8 8zM128 96V56c0-30.9 25.1-56 56-56H328c30.9 0 56 25.1 56 56V96h32c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V160c0-35.3 28.7-64 64-64h32z'/></svg>">
+    <title>Coming Soon | Assist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#f43f5e', // Rose/Pink
+                        darkBg: '#0f1117',
+                        surface: '#1e293b',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-darkBg dark:text-slate-100 transition-colors duration-300 font-sans min-h-screen flex flex-col overflow-x-hidden">
+
+    <header class="absolute top-0 left-0 w-full p-4 md:p-6 flex justify-between items-center z-50">
+        <a href="index.html" class="flex items-center gap-2 md:gap-3 group">
+            <div class="w-9 h-9 md:w-10 md:h-10 bg-primary rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary/30 rotate-3 group-hover:rotate-0 transition-transform">
+                <i class="fa-solid fa-briefcase text-sm md:text-base"></i>
+            </div>
+            <span class="font-black text-xl md:text-2xl tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-primary to-rose-400">ASSIST</span>
+        </a>
+
+        <div class="flex items-center gap-2 md:gap-4">
+            <button onclick="toggleDirection()" class="text-[9px] md:text-[10px] font-black px-2 md:px-3 py-1 border-2 border-slate-900 dark:border-white rounded uppercase hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-darkBg transition">LTR</button>
+            <button onclick="toggleTheme()" class="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center rounded-full bg-white dark:bg-surface shadow-md hover:text-primary transition">
+                <i id="theme-icon" class="fa-solid fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-grow flex flex-col items-center justify-center p-6 relative">
+        
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] -z-0"></div>
+
+        <div class="relative z-10 text-center max-w-4xl mx-auto">
+            <div class="inline-block mb-8 animate-float">
+                <div class="w-20 h-20 md:w-24 md:h-24 bg-white dark:bg-surface rounded-[2rem] shadow-2xl flex items-center justify-center text-primary text-4xl border border-slate-100 dark:border-slate-800">
+                    <i class="fa-solid fa-rocket"></i>
+                </div>
+            </div>
+
+            <h1 class="text-4xl md:text-7xl font-black tracking-tighter mb-6 leading-tight">
+                Something <span class="text-primary ">Elite</span> is <br> Coming Your Way
+            </h1>
+            
+            <p class="text-slate-500 dark:text-slate-400 text-sm md:text-lg max-w-xl mx-auto mb-12 font-medium">
+                We're fine-tuning the ultimate virtual assistant experience. Subscribe to get notified and receive an exclusive early-bird discount.
+            </p>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-16">
+                <div class="bg-white dark:bg-surface p-4 md:p-6 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-xl">
+                    <span id="days" class="text-3xl md:text-5xl font-black text-primary">00</span>
+                    <p class="text-[10px] uppercase font-black tracking-widest text-slate-400 mt-2">Days</p>
+                </div>
+                <div class="bg-white dark:bg-surface p-4 md:p-6 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-xl">
+                    <span id="hours" class="text-3xl md:text-5xl font-black text-primary">00</span>
+                    <p class="text-[10px] uppercase font-black tracking-widest text-slate-400 mt-2">Hours</p>
+                </div>
+                <div class="bg-white dark:bg-surface p-4 md:p-6 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-xl">
+                    <span id="minutes" class="text-3xl md:text-5xl font-black text-primary">00</span>
+                    <p class="text-[10px] uppercase font-black tracking-widest text-slate-400 mt-2">Minutes</p>
+                </div>
+                <div class="bg-white dark:bg-surface p-4 md:p-6 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-xl">
+                    <span id="seconds" class="text-3xl md:text-5xl font-black text-primary">00</span>
+                    <p class="text-[10px] uppercase font-black tracking-widest text-slate-400 mt-2">Seconds</p>
+                </div>
+            </div>
+
+            <form action="#" class="relative max-w-md mx-auto">
+                <input type="email" placeholder="Enter your email address" class="w-full bg-white dark:bg-surface border border-slate-200 dark:border-slate-700 py-5 pl-6 pr-40 rounded-full shadow-2xl focus:ring-4 focus:ring-primary/10 transition-all outline-none text-sm md:text-base">
+                <button class="absolute right-2 top-2 bottom-2 bg-primary text-white px-6 md:px-8 rounded-full font-black text-xs md:text-sm uppercase tracking-widest hover:brightness-110 active:scale-95 transition-all">
+                    Notify Me
+                </button>
+            </form>
+            
+            <p class="mt-8 text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">
+                <i class="fa-solid fa-lock text-primary mr-2"></i> No spam. Just updates.
+            </p>
+        </div>
+    </main>
+
+    <script>
+        const html = document.getElementById('html-tag');
+        const themeIcon = document.getElementById('theme-icon');
+
+        // Persistence Logic
+        if (localStorage.getItem('theme') === 'dark') {
+            html.classList.add('dark');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        }
+        if (localStorage.getItem('dir') === 'rtl') {
+            html.setAttribute('dir', 'rtl');
+        }
+
+        function toggleTheme() {
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        function toggleDirection() {
+            const currentDir = html.getAttribute('dir');
+            const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+            html.setAttribute('dir', newDir);
+            localStorage.setItem('dir', newDir);
+        }
+
+        // Countdown Logic (Set to 30 days from now)
+        const targetDate = new Date().getTime() + (30 * 24 * 60 * 60 * 1000);
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerText = d.toString().padStart(2, '0');
+            document.getElementById('hours').innerText = h.toString().padStart(2, '0');
+            document.getElementById('minutes').innerText = m.toString().padStart(2, '0');
+            document.getElementById('seconds').innerText = s.toString().padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
