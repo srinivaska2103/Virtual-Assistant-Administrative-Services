@@ -49,9 +49,9 @@
             </div>
            </a>
             
-            <button onclick="toggleDirection()" class="text-[10px] font-black px-2 py-1 border border-slate-200 dark:border-slate-700 rounded uppercase hover:bg-primary hover:text-white transition-all">
+            <!-- <button onclick="toggleDirection()" class="text-[10px] font-black px-2 py-1 border border-slate-200 dark:border-slate-700 rounded uppercase hover:bg-primary hover:text-white transition-all">
                 <span id="dir-label">LTR</span>
-            </button>
+            </button> -->
         </div>
 
         <nav class="flex-grow px-4 space-y-2 mt-4 overflow-y-auto no-scrollbar">
@@ -74,9 +74,9 @@
         </nav>
 
         <div class="p-4 border-t border-slate-100 dark:border-slate-800">
-            <button onclick="toggleTheme()" class="w-full flex items-center gap-4 px-4 py-3 rounded-xl font-bold text-sm hover:bg-slate-100 dark:hover:bg-darkBg transition-all">
+            <!-- <button onclick="toggleTheme()" class="w-full flex items-center gap-4 px-4 py-3 rounded-xl font-bold text-sm hover:bg-slate-100 dark:hover:bg-darkBg transition-all">
                 <i id="theme-icon" class="fa-solid fa-moon w-5"></i> Appearance
-            </button>
+            </button> -->
             <a href="login.html" class="w-full flex items-center gap-4 px-4 py-3 rounded-xl font-bold text-sm text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-900/10 transition-all mt-2">
                 <i class="fa-solid fa-right-from-bracket w-5"></i> Logout
             </a>
@@ -85,52 +85,87 @@
 
     <main class="flex-grow flex flex-col min-w-0">
         
-        <header class="h-16 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-surface/80 backdrop-blur-md flex items-center justify-between px-4 lg:px-8 sticky top-0 z-40">
-            <div class="flex items-center gap-4">
-                <button onclick="toggleSidebar()" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-darkBg">
-                    <i class="fa-solid fa-bars-staggered"></i>
-                </button>
-                <h2 id="page-title" class="font-black text-lg tracking-tight">Dashboard Overview</h2>
+     <header class="h-16 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-surface/80 backdrop-blur-md flex items-center justify-between px-4 lg:px-8 sticky top-0 z-40">
+    <!-- Left: Sidebar Toggle & Title -->
+    <div class="flex items-center gap-4">
+        <button onclick="toggleSidebar()" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-darkBg transition-all active:scale-90">
+            <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+        <h2 id="page-title" class="font-black text-sm md:text-lg tracking-tight truncate max-w-[120px] md:max-w-none">Dashboard</h2>
+    </div>
+
+    <!-- Right: Unified Action Group -->
+    <div class="flex items-center gap-2 md:gap-4">
+        
+        <!-- Action Buttons Container -->
+        <div class="flex items-center gap-2">
+            <!-- Theme Toggle: Compact Square -->
+            <button onclick="toggleTheme()" 
+                    title="Toggle Theme"
+                    class="w-10 h-10 flex items-center justify-center rounded-xl border-2 border-slate-100 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-darkBg transition-all active:scale-90 group">
+                <i id="theme-icon" class="fa-solid fa-moon text-slate-500 dark:text-slate-400 group-hover:text-primary"></i>
+            </button>
+
+            <!-- Direction Toggle: Compact Square -->
+            <button onclick="toggleDirection()" 
+                    title="Toggle Layout Direction"
+                    class="w-10 h-10 flex items-center justify-center rounded-xl border-2 border-slate-100 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-darkBg transition-all active:scale-90 font-black text-[10px] text-slate-500 dark:text-slate-400 hover:text-primary uppercase">
+                <span id="dir-label">LTR</span>
+            </button>
+        </div>
+
+        <!-- Vertical Divider -->
+        <div class="h-8 w-px bg-slate-200 dark:bg-slate-800 hidden sm:block"></div>
+
+        <!-- User Profile Info -->
+        <div class="flex items-center gap-3">
+            <div class="hidden sm:block text-right">
+                <p class="text-xs font-black dark:text-white leading-none mb-1">Srinivas</p>
+                <p class="text-[9px] text-primary uppercase font-bold tracking-widest">Premium Plan</p>
             </div>
-            
-            <div class="flex items-center gap-4">
-                <div class="hidden sm:block text-right">
-                    <p class="text-xs font-black dark:text-white">User</p>
-                    <p class="text-[10px] text-slate-500 uppercase font-bold tracking-widest">Premium Plan</p>
-                </div>
-                <img src="assets/test1" class="w-10 h-10 rounded-xl object-cover border-2 border-primary/20">
-            </div>
-        </header>
+            <img src="assets/test1" alt="User Profile" class="w-10 h-10 rounded-xl object-cover border-2 border-primary/20 shadow-sm">
+        </div>
+    </div>
+</header>
 
         <div class="p-4 lg:p-8 overflow-y-auto h-[calc(100vh-64px)]">
             
-           <section id="overview" class="tab-content active space-y-6 md:space-y-8">
+  <section id="overview" class="tab-content active space-y-6 md:space-y-8">
     
+    <!-- 👋 Welcome Header -->
     <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-            <h1 class="text-2xl md:text-3xl font-black tracking-tighter text-slate-900 dark:text-white">Good Morning, Srinivas 👋</h1>
-            <p class="text-xs md:text-sm text-slate-500 font-medium italic">Your team is 85% through this month's sprint.</p>
+            <!-- Increased from text-2xl/3xl to text-3xl/4xl -->
+            <h1 class="text-3xl md:text-4xl font-black tracking-tighter text-slate-900 dark:text-white">Good Morning, Srinivas 👋</h1>
+            <!-- Increased from text-xs/sm to text-sm/base -->
+            <p class="text-sm md:text-base text-slate-500 font-medium italic">Your team is 85% through this month's sprint.</p>
         </div>
         <div class="flex gap-2">
-            <button class="flex-1 md:flex-none bg-primary text-white px-5 py-3 rounded-xl font-black text-xs uppercase tracking-widest shadow-lg shadow-primary/20 hover:scale-105 transition-all">
+            <!-- Increased from text-xs to text-sm -->
+            <button class="flex-1 md:flex-none bg-primary text-white px-6 py-3 rounded-xl font-black text-sm uppercase tracking-widest shadow-lg shadow-primary/20 hover:scale-105 transition-all">
                 + New Task
             </button>
         </div>
     </div>
 
+    <!-- 📈 Metrics Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <div class="bg-white dark:bg-surface p-6 rounded-[2rem] border border-slate-100 dark:border-slate-800 transition-all hover:border-primary/50">
-            <p class="text-[10px] font-black uppercase text-slate-400 tracking-widest mb-2">Active Tasks</p>
+            <!-- Increased from text-[10px] to text-xs -->
+            <p class="text-xs font-black uppercase text-slate-400 tracking-widest mb-2">Active Tasks</p>
             <div class="flex items-end justify-between">
-                <p class="text-3xl font-black text-primary">12</p>
-                <span class="text-[10px] font-bold text-green-500 bg-green-500/10 px-2 py-1 rounded-lg">+2 today</span>
+                <!-- Increased from text-3xl to text-4xl -->
+                <p class="text-4xl font-black text-primary">12</p>
+                <!-- Increased from text-[10px] to text-xs -->
+                <span class="text-xs font-bold text-green-500 bg-green-500/10 px-2 py-1 rounded-lg">+2 today</span>
             </div>
         </div>
         
         <div class="bg-white dark:bg-surface p-6 rounded-[2rem] border border-slate-100 dark:border-slate-800 transition-all hover:border-primary/50">
-            <p class="text-[10px] font-black uppercase text-slate-400 tracking-widest mb-2">Hours Used</p>
+            <p class="text-xs font-black uppercase text-slate-400 tracking-widest mb-2">Hours Used</p>
             <div class="flex flex-col gap-2">
-                <p class="text-3xl font-black text-slate-900 dark:text-white">32.5 <span class="text-sm text-slate-400">/ 40</span></p>
+                <!-- Increased from text-3xl to text-4xl -->
+                <p class="text-4xl font-black text-slate-900 dark:text-white">32.5 <span class="text-base text-slate-400">/ 40</span></p>
                 <div class="w-full bg-slate-100 dark:bg-darkBg h-1.5 rounded-full overflow-hidden">
                     <div class="bg-primary h-full rounded-full" style="width: 81%"></div>
                 </div>
@@ -138,28 +173,34 @@
         </div>
 
         <div class="bg-white dark:bg-surface p-6 rounded-[2rem] border border-slate-100 dark:border-slate-800">
-            <p class="text-[10px] font-black uppercase text-slate-400 tracking-widest mb-2">Assigned VA</p>
+            <p class="text-xs font-black uppercase text-slate-400 tracking-widest mb-2">Assigned VA</p>
             <div class="flex items-center gap-3">
                 <div class="w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center font-black shadow-lg">JD</div>
                 <div>
-                    <p class="font-black text-sm text-slate-900 dark:text-white">Jane Doe</p>
-                    <p class="text-[10px] text-green-500 font-bold uppercase">Online Now</p>
+                    <!-- Increased from text-sm to text-base -->
+                    <p class="font-black text-base text-slate-900 dark:text-white">Jane Doe</p>
+                    <!-- Increased from text-[10px] to text-xs -->
+                    <p class="text-xs text-green-500 font-bold uppercase">Online Now</p>
                 </div>
             </div>
         </div>
 
         <div class="bg-white dark:bg-surface p-6 rounded-[2rem] border border-slate-100 dark:border-slate-800">
-            <p class="text-[10px] font-black uppercase text-slate-400 tracking-widest mb-2">Next Renewal</p>
-            <p class="text-3xl font-black text-slate-900 dark:text-white">18 <span class="text-sm text-slate-400">days</span></p>
+            <p class="text-xs font-black uppercase text-slate-400 tracking-widest mb-2">Next Renewal</p>
+            <!-- Increased from text-3xl to text-4xl -->
+            <p class="text-4xl font-black text-slate-900 dark:text-white">18 <span class="text-base text-slate-400">days</span></p>
         </div>
     </div>
 
+    <!-- 📊 Analytics & Activity -->
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         <div class="lg:col-span-2 bg-white dark:bg-surface p-6 md:p-8 rounded-[2.5rem] border border-slate-100 dark:border-slate-800">
             <div class="flex items-center justify-between mb-8">
-                <h3 class="font-black text-slate-900 dark:text-white uppercase tracking-tighter">Productivity Analytics</h3>
-                <select class="bg-slate-50 dark:bg-darkBg border-none text-[10px] font-black uppercase rounded-lg px-2 py-1 outline-none">
+                <!-- Increased from text-base (default) to text-lg -->
+                <h3 class="font-black text-lg text-slate-900 dark:text-white uppercase tracking-tighter">Productivity Analytics</h3>
+                <!-- Increased from text-[10px] to text-xs -->
+                <select class="bg-slate-50 dark:bg-darkBg border-none text-xs font-black uppercase rounded-lg px-2 py-1 outline-none">
                     <option>Last 7 Days</option>
                     <option>Last 30 Days</option>
                 </select>
@@ -170,46 +211,50 @@
         </div>
 
         <div class="bg-white dark:bg-surface p-6 md:p-8 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 flex flex-col">
-            <h3 class="font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-6">Recent Activity</h3>
+            <h3 class="font-black text-lg text-slate-900 dark:text-white uppercase tracking-tighter mb-6">Recent Activity</h3>
             
             <div class="space-y-6 overflow-y-auto no-scrollbar flex-grow pr-2">
                 <div class="flex gap-4 relative">
                     <div class="absolute h-full w-px bg-slate-100 dark:bg-slate-800 left-5 top-8 -z-10"></div>
                     <div class="w-10 h-10 rounded-full bg-blue-500/10 text-blue-500 flex items-center justify-center shrink-0">
-                        <i class="fa-solid fa-file-arrow-up text-xs"></i>
+                        <i class="fa-solid fa-file-arrow-up text-sm"></i>
                     </div>
                     <div>
-                        <p class="text-xs font-black text-slate-900 dark:text-white">New Report Uploaded</p>
-                        <p class="text-[10px] text-slate-500 font-medium">Jane Doe uploaded "Monthly_Stats.pdf"</p>
-                        <p class="text-[9px] text-primary font-bold uppercase mt-1">2 mins ago</p>
+                        <!-- Increased from text-xs to text-sm -->
+                        <p class="text-sm font-black text-slate-900 dark:text-white">New Report Uploaded</p>
+                        <!-- Increased from text-[10px] to text-xs -->
+                        <p class="text-xs text-slate-500 font-medium">Jane Doe uploaded "Monthly_Stats.pdf"</p>
+                        <!-- Increased from text-[9px] to text-[11px] -->
+                        <p class="text-[11px] text-primary font-bold uppercase mt-1">2 mins ago</p>
                     </div>
                 </div>
 
                 <div class="flex gap-4 relative">
                     <div class="absolute h-full w-px bg-slate-100 dark:bg-slate-800 left-5 top-8 -z-10"></div>
                     <div class="w-10 h-10 rounded-full bg-green-500/10 text-green-500 flex items-center justify-center shrink-0">
-                        <i class="fa-solid fa-circle-check text-xs"></i>
+                        <i class="fa-solid fa-circle-check text-sm"></i>
                     </div>
                     <div>
-                        <p class="text-xs font-black text-slate-900 dark:text-white">Task Completed</p>
-                        <p class="text-[10px] text-slate-500 font-medium">"Email Triage" marked as finished.</p>
-                        <p class="text-[9px] text-primary font-bold uppercase mt-1">1 hour ago</p>
+                        <p class="text-sm font-black text-slate-900 dark:text-white">Task Completed</p>
+                        <p class="text-xs text-slate-500 font-medium">"Email Triage" marked as finished.</p>
+                        <p class="text-[11px] text-primary font-bold uppercase mt-1">1 hour ago</p>
                     </div>
                 </div>
 
                 <div class="flex gap-4">
                     <div class="w-10 h-10 rounded-full bg-amber-500/10 text-amber-500 flex items-center justify-center shrink-0">
-                        <i class="fa-solid fa-clock text-xs"></i>
+                        <i class="fa-solid fa-clock text-sm"></i>
                     </div>
                     <div>
-                        <p class="text-xs font-black text-slate-900 dark:text-white">Clock In</p>
-                        <p class="text-[10px] text-slate-500 font-medium">Jane Doe started tracking time.</p>
-                        <p class="text-[9px] text-primary font-bold uppercase mt-1">3 hours ago</p>
+                        <p class="text-sm font-black text-slate-900 dark:text-white">Clock In</p>
+                        <p class="text-xs text-slate-500 font-medium">Jane Doe started tracking time.</p>
+                        <p class="text-[11px] text-primary font-bold uppercase mt-1">3 hours ago</p>
                     </div>
                 </div>
             </div>
 
-            <button class="mt-6 w-full py-3 bg-slate-50 dark:bg-darkBg rounded-xl text-[10px] font-black uppercase tracking-widest hover:text-primary transition-all">
+            <!-- Increased from text-[10px] to text-xs -->
+            <button class="mt-6 w-full py-3 bg-slate-50 dark:bg-darkBg rounded-xl text-xs font-black uppercase tracking-widest hover:text-primary transition-all">
                 View All Activity
             </button>
         </div>
@@ -271,148 +316,213 @@
     });
 </script>
 
-            <section id="time" class="tab-content space-y-8">
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <div class="lg:col-span-2 space-y-6">
-                        <div class="bg-white dark:bg-surface p-6 rounded-[2.5rem] border border-slate-100 dark:border-slate-800">
-                            <h3 class="font-black mb-6 flex items-center gap-2">
-                                <i class="fa-solid fa-chart-simple text-primary"></i> Weekly Hour Breakdown
-                            </h3>
-                            <div class="space-y-4">
-                                <div>
-                                    <div class="flex justify-between text-xs font-bold mb-1">
-                                        <span>Admin & Emails</span>
-                                        <span>12.5 hrs</span>
-                                    </div>
-                                    <div class="w-full bg-slate-100 dark:bg-darkBg h-2 rounded-full">
-                                        <div class="bg-primary h-2 rounded-full" style="width: 60%"></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="flex justify-between text-xs font-bold mb-1">
-                                        <span>Social Media Mgmt</span>
-                                        <span>8.0 hrs</span>
-                                    </div>
-                                    <div class="w-full bg-slate-100 dark:bg-darkBg h-2 rounded-full">
-                                        <div class="bg-blue-500 h-2 rounded-full" style="width: 40%"></div>
-                                    </div>
-                                </div>
-                            </div>
+           <section id="time" class="tab-content space-y-8">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 space-y-6">
+            <!-- Weekly Hour Breakdown Card -->
+            <div class="bg-white dark:bg-surface p-6 rounded-[2.5rem] border border-slate-100 dark:border-slate-800">
+                <!-- Increased from base to text-xl -->
+                <h3 class="font-black text-xl mb-6 flex items-center gap-2">
+                    <i class="fa-solid fa-chart-simple text-primary"></i> Weekly Hour Breakdown
+                </h3>
+                <div class="space-y-4">
+                    <div>
+                        <!-- Increased from text-xs to text-sm -->
+                        <div class="flex justify-between text-sm font-bold mb-1">
+                            <span>Admin & Emails</span>
+                            <span>12.5 hrs</span>
                         </div>
-
-                        <div class="bg-white dark:bg-surface rounded-[2.5rem] border border-slate-100 dark:border-slate-800 overflow-hidden">
-                            <div class="p-6 border-b border-slate-100 dark:border-slate-800"><h3 class="font-black">Recent Logs</h3></div>
-                            <div class="divide-y divide-slate-100 dark:divide-slate-800">
-                                <div class="p-4 flex justify-between items-center hover:bg-slate-50 dark:hover:bg-darkBg transition-all">
-                                    <div><p class="text-sm font-bold">Inbox Triage</p><p class="text-[10px] text-slate-400">Apr 07, 2026</p></div>
-                                    <span class="text-sm font-black text-primary">+2.5h</span>
-                                </div>
-                                <div class="p-4 flex justify-between items-center hover:bg-slate-50 dark:hover:bg-darkBg transition-all">
-                                    <div><p class="text-sm font-bold">LinkedIn Content Sched</p><p class="text-[10px] text-slate-400">Apr 06, 2026</p></div>
-                                    <span class="text-sm font-black text-primary">+4.0h</span>
-                                </div>
-                            </div>
+                        <div class="w-full bg-slate-100 dark:bg-darkBg h-2 rounded-full">
+                            <div class="bg-primary h-2 rounded-full" style="width: 60%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <!-- Increased from text-xs to text-sm -->
+                        <div class="flex justify-between text-sm font-bold mb-1">
+                            <span>Social Media Mgmt</span>
+                            <span>8.0 hrs</span>
+                        </div>
+                        <div class="w-full bg-slate-100 dark:bg-darkBg h-2 rounded-full">
+                            <div class="bg-blue-500 h-2 rounded-full" style="width: 40%"></div>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <section id="messages" class="tab-content h-full">
-                <div class="flex bg-white dark:bg-surface rounded-[2.5rem] border border-slate-100 dark:border-slate-800 h-[600px] overflow-hidden">
-                    <div class="w-1/3 border-r border-slate-100 dark:border-slate-800 hidden md:block">
-                        <div class="p-6 border-b border-slate-100 dark:border-slate-800"><h3 class="font-black">Chats</h3></div>
-                        <div class="overflow-y-auto">
-                            <div class="p-4 flex items-center gap-3 bg-rose-50 dark:bg-rose-900/10 border-l-4 border-primary">
-                                <div class="w-10 h-10 rounded-full bg-slate-200"></div>
-                                <div class="flex-grow">
-                                    <p class="text-xs font-black">Jane Doe (VA)</p>
-                                    <p class="text-[10px] text-primary truncate">Drafts are ready...</p>
-                                </div>
-                            </div>
+            <!-- Recent Logs Card -->
+            <div class="bg-white dark:bg-surface rounded-[2.5rem] border border-slate-100 dark:border-slate-800 overflow-hidden">
+                <div class="p-6 border-b border-slate-100 dark:border-slate-800">
+                    <!-- Increased from base to text-lg -->
+                    <h3 class="font-black text-lg">Recent Logs</h3>
+                </div>
+                <div class="divide-y divide-slate-100 dark:divide-slate-800">
+                    <div class="p-4 flex justify-between items-center hover:bg-slate-50 dark:hover:bg-darkBg transition-all">
+                        <div>
+                            <!-- Increased from text-sm to text-base -->
+                            <p class="text-base font-bold">Inbox Triage</p>
+                            <!-- Increased from text-[10px] to text-xs -->
+                            <p class="text-xs text-slate-400">Apr 07, 2026</p>
                         </div>
+                        <!-- Increased from text-sm to text-base -->
+                        <span class="text-base font-black text-primary">+2.5h</span>
                     </div>
-                    <div class="flex-grow flex flex-col">
-                        <div class="p-6 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center">
-                            <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 rounded-full bg-slate-200"></div>
-                                <div><p class="text-sm font-black">Jane Doe</p><p class="text-[10px] text-green-500">Online</p></div>
-                            </div>
+                    <div class="p-4 flex justify-between items-center hover:bg-slate-50 dark:hover:bg-darkBg transition-all">
+                        <div>
+                            <!-- Increased from text-sm to text-base -->
+                            <p class="text-base font-bold">LinkedIn Content Sched</p>
+                            <!-- Increased from text-[10px] to text-xs -->
+                            <p class="text-xs text-slate-400">Apr 06, 2026</p>
                         </div>
-                        <div class="flex-grow p-6 space-y-4 overflow-y-auto no-scrollbar">
-                            <div class="flex flex-col items-start"><div class="bg-slate-100 dark:bg-darkBg p-3 rounded-2xl rounded-tl-none max-w-[80%] text-xs font-medium">Hello Srinivas! I've completed the weekly social media drafts for your review.</div></div>
-                            <div class="flex flex-col items-end"><div class="bg-primary text-white p-3 rounded-2xl rounded-tr-none max-w-[80%] text-xs font-medium">Great job, Jane. I'll check them in 10 minutes.</div></div>
-                        </div>
-                        <div class="p-4 bg-slate-50 dark:bg-darkBg/50 flex items-center gap-4">
-                            <button class="text-slate-400 hover:text-primary"><i class="fa-solid fa-paperclip"></i></button>
-                            <input type="text" placeholder="Type a message..." class="flex-grow bg-white dark:bg-surface border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2 text-sm focus:outline-none">
-                            <button class="w-10 h-10 bg-primary text-white rounded-xl flex items-center justify-center"><i class="fa-solid fa-paper-plane text-xs"></i></button>
-                        </div>
+                        <!-- Increased from text-sm to text-base -->
+                        <span class="text-base font-black text-primary">+4.0h</span>
                     </div>
                 </div>
-            </section>
-            <section id="billing" class="tab-content space-y-8">
+            </div>
+        </div>
+    </div>
+</section>
+<section id="messages" class="tab-content h-full">
+    <div class="flex bg-white dark:bg-surface rounded-[2.5rem] border border-slate-100 dark:border-slate-800 h-[600px] overflow-hidden">
+        <!-- Sidebar -->
+        <div class="w-1/3 border-r border-slate-100 dark:border-slate-800 hidden md:block">
+            <div class="p-6 border-b border-slate-100 dark:border-slate-800">
+                <!-- Increased from base to text-lg -->
+                <h3 class="font-black text-lg">Chats</h3>
+            </div>
+            <div class="overflow-y-auto">
+                <div class="p-4 flex items-center gap-3 bg-rose-50 dark:bg-rose-900/10 border-l-4 border-primary">
+                    <div class="w-10 h-10 rounded-full bg-slate-200"></div>
+                    <div class="flex-grow">
+                        <!-- Increased from text-xs to text-sm -->
+                        <p class="text-sm font-black">Jane Doe (VA)</p>
+                        <!-- Increased from text-[10px] to text-xs -->
+                        <p class="text-xs text-primary truncate">Drafts are ready...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Area -->
+        <div class="flex-grow flex flex-col">
+            <div class="p-6 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-slate-200"></div>
+                    <div>
+                        <!-- Increased from text-sm to text-base -->
+                        <p class="text-base font-black">Jane Doe</p>
+                        <!-- Increased from text-[10px] to text-xs -->
+                        <p class="text-xs text-green-500">Online</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex-grow p-6 space-y-4 overflow-y-auto no-scrollbar">
+                <!-- Message Left -->
+                <div class="flex flex-col items-start">
+                    <!-- Increased from text-xs to text-sm -->
+                    <div class="bg-slate-100 dark:bg-darkBg p-3 rounded-2xl rounded-tl-none max-w-[80%] text-sm font-medium">
+                        Hello Srinivas! I've completed the weekly social media drafts for your review.
+                    </div>
+                </div>
+                <!-- Message Right -->
+                <div class="flex flex-col items-end">
+                    <!-- Increased from text-xs to text-sm -->
+                    <div class="bg-primary text-white p-3 rounded-2xl rounded-tr-none max-w-[80%] text-sm font-medium">
+                        Great job, Jane. I'll check them in 10 minutes.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="p-4 bg-slate-50 dark:bg-darkBg/50 flex items-center gap-4">
+                <button class="text-slate-400 hover:text-primary"><i class="fa-solid fa-paperclip text-base"></i></button>
+                <!-- Increased from text-sm to text-base -->
+                <input type="text" placeholder="Type a message..." class="flex-grow bg-white dark:bg-surface border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2 text-base focus:outline-none">
+                <button class="w-10 h-10 bg-primary text-white rounded-xl flex items-center justify-center"><i class="fa-solid fa-paper-plane text-sm"></i></button>
+            </div>
+        </div>
+    </div>
+</section>
+      <section id="billing" class="tab-content space-y-8">
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
+        <!-- Subscription Card -->
         <div class="lg:col-span-2 bg-primary p-8 md:p-10 rounded-[2.5rem] text-white shadow-2xl shadow-primary/30 relative overflow-hidden group">
             <div class="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-3xl group-hover:scale-110 transition-transform duration-700"></div>
             
             <div class="relative z-10">
                 <div class="flex justify-between items-start mb-10">
                     <div>
-                        <p class="text-[10px] font-black uppercase tracking-[0.2em] opacity-80 mb-2">Current Subscription</p>
-                        <h4 class="text-3xl font-black tracking-tighter">Premium Part-Time</h4>
+                        <!-- Increased from text-[10px] to text-xs -->
+                        <p class="text-xs font-black uppercase tracking-[0.2em] opacity-80 mb-2">Current Subscription</p>
+                        <!-- Increased from text-3xl to text-4xl -->
+                        <h4 class="text-4xl font-black tracking-tighter">Premium Part-Time</h4>
                     </div>
-                    <span class="bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest">Active</span>
+                    <!-- Increased from text-[10px] to text-xs -->
+                    <span class="bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest">Active</span>
                 </div>
 
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                     <div>
-                        <p class="text-[10px] font-bold opacity-70 uppercase mb-1">Monthly Rate</p>
-                        <p class="text-xl font-black">$800.00</p>
+                        <!-- Increased from text-[10px] to text-xs -->
+                        <p class="text-xs font-bold opacity-70 uppercase mb-1">Monthly Rate</p>
+                        <!-- Increased from text-xl to text-2xl -->
+                        <p class="text-2xl font-black">$800.00</p>
                     </div>
                     <div>
-                        <p class="text-[10px] font-bold opacity-70 uppercase mb-1">Hours / Mo</p>
-                        <p class="text-xl font-black">40 Hours</p>
+                        <p class="text-xs font-bold opacity-70 uppercase mb-1">Hours / Mo</p>
+                        <p class="text-2xl font-black">40 Hours</p>
                     </div>
                     <div class="col-span-2 text-right">
-                        <p class="text-[10px] font-bold opacity-70 uppercase mb-1">Next Billing Date</p>
-                        <p class="text-xl font-black">May 01, 2026</p>
+                        <p class="text-xs font-bold opacity-70 uppercase mb-1">Next Billing Date</p>
+                        <p class="text-2xl font-black">May 01, 2026</p>
                     </div>
                 </div>
 
                 <div class="mt-10 flex gap-4">
-                    <button class="bg-white text-primary px-6 py-3 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-slate-100 transition-all">Upgrade Plan</button>
-                    <button class="bg-white/10 border border-white/20 text-white px-6 py-3 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-white/20 transition-all">Cancel</button>
+                    <!-- Increased from text-xs to text-sm -->
+                    <button class="bg-white text-primary px-6 py-3 rounded-xl font-black text-sm uppercase tracking-widest hover:bg-slate-100 transition-all">Upgrade Plan</button>
+                    <button class="bg-white/10 border border-white/20 text-white px-6 py-3 rounded-xl font-black text-sm uppercase tracking-widest hover:bg-white/20 transition-all">Cancel</button>
                 </div>
             </div>
         </div>
 
+        <!-- Payment Method Card -->
         <div class="bg-white dark:bg-surface p-8 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 flex flex-col justify-between group">
             <div>
-                <h4 class="font-black text-slate-900 dark:text-white mb-6 uppercase tracking-widest text-xs">Primary Payment</h4>
+                <!-- Increased from text-xs to text-sm -->
+                <h4 class="font-black text-slate-900 dark:text-white mb-6 uppercase tracking-widest text-sm">Primary Payment</h4>
                 <div class="flex items-center gap-4 p-4 bg-slate-50 dark:bg-darkBg rounded-2xl border border-slate-100 dark:border-slate-800 transition-all group-hover:border-primary/50">
-                    <div class="w-12 h-8 bg-slate-900 dark:bg-slate-700 rounded flex items-center justify-center text-white text-xs font-bold italic">VISA</div>
+                    <!-- Increased from text-xs to text-sm -->
+                    <div class="w-12 h-8 bg-slate-900 dark:bg-slate-700 rounded flex items-center justify-center text-white text-sm font-bold italic">VISA</div>
                     <div>
-                        <p class="text-sm font-black dark:text-white">•••• 4242</p>
-                        <p class="text-[10px] text-slate-400 font-bold uppercase">Expires 12/28</p>
+                        <!-- Increased from text-sm to text-base -->
+                        <p class="text-base font-black dark:text-white">•••• 4242</p>
+                        <!-- Increased from text-[10px] to text-xs -->
+                        <p class="text-xs text-slate-400 font-bold uppercase">Expires 12/28</p>
                     </div>
                 </div>
             </div>
-            <button class="mt-8 w-full py-4 border-2 border-dashed border-slate-200 dark:border-slate-700 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-primary hover:border-primary transition-all">
+            <!-- Increased from text-[10px] to text-xs -->
+            <button class="mt-8 w-full py-4 border-2 border-dashed border-slate-200 dark:border-slate-700 rounded-2xl text-xs font-black uppercase tracking-widest text-slate-400 hover:text-primary hover:border-primary transition-all">
                 <i class="fa-solid fa-plus mr-2"></i> Add New Method
             </button>
         </div>
     </div>
 
+    <!-- History Table -->
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div class="lg:col-span-2 bg-white dark:bg-surface rounded-[2.5rem] border border-slate-100 dark:border-slate-800 overflow-hidden">
             <div class="p-6 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center">
-                <h3 class="font-black tracking-tight">Billing History</h3>
-                <button class="text-[10px] font-black text-primary uppercase tracking-widest hover:underline">Download All (ZIP)</button>
+                <!-- Increased from base to text-lg -->
+                <h3 class="font-black text-lg tracking-tight">Billing History</h3>
+                <!-- Increased from text-[10px] to text-xs -->
+                <button class="text-xs font-black text-primary uppercase tracking-widest hover:underline">Download All (ZIP)</button>
             </div>
             <div class="overflow-x-auto">
                 <table class="w-full text-left">
-                    <thead class="bg-slate-50 dark:bg-darkBg/50 text-[10px] font-black uppercase tracking-widest text-slate-400">
+                    <!-- Increased from text-[10px] to text-xs -->
+                    <thead class="bg-slate-50 dark:bg-darkBg/50 text-xs font-black uppercase tracking-widest text-slate-400">
                         <tr>
                             <th class="px-8 py-4">Invoice ID</th>
                             <th class="px-8 py-4">Date</th>
@@ -421,44 +531,39 @@
                             <th class="px-8 py-4 text-right">Action</th>
                         </tr>
                     </thead>
-                    <tbody class="text-sm font-bold divide-y divide-slate-100 dark:divide-slate-800">
+                    <tbody class="text-base font-bold divide-y divide-slate-100 dark:divide-slate-800">
                         <tr class="hover:bg-slate-50/50 dark:hover:bg-darkBg/30 transition-all">
                             <td class="px-8 py-5 text-slate-400">#INV-8821</td>
                             <td class="px-8 py-5 dark:text-white">Apr 01, 2026</td>
                             <td class="px-8 py-5 dark:text-white">$800.00</td>
                             <td class="px-8 py-5 text-green-500">Paid</td>
-                            <td class="px-8 py-5 text-right"><button class="text-primary hover:scale-110 transition-transform"><i class="fa-solid fa-file-arrow-down"></i></button></td>
-                        </tr>
-                        <tr class="hover:bg-slate-50/50 dark:hover:bg-darkBg/30 transition-all">
-                            <td class="px-8 py-5 text-slate-400">#INV-7740</td>
-                            <td class="px-8 py-5 dark:text-white">Mar 01, 2026</td>
-                            <td class="px-8 py-5 dark:text-white">$800.00</td>
-                            <td class="px-8 py-5 text-green-500">Paid</td>
-                            <td class="px-8 py-5 text-right"><button class="text-primary hover:scale-110 transition-transform"><i class="fa-solid fa-file-arrow-down"></i></button></td>
+                            <td class="px-8 py-5 text-right"><button class="text-primary hover:scale-110 transition-transform"><i class="fa-solid fa-file-arrow-down text-base"></i></button></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
 
+        <!-- Add-on Hours Card -->
         <div class="bg-white dark:bg-surface p-8 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-200/50 dark:shadow-none">
-            <h4 class="font-black mb-6 flex items-center gap-2">
+            <!-- Increased from base to text-lg -->
+            <h4 class="font-black text-lg mb-6 flex items-center gap-2">
                 <i class="fa-solid fa-bolt text-primary"></i> Add-on Hours
             </h4>
-            <p class="text-sm text-slate-500 dark:text-slate-400 font-medium mb-8 leading-relaxed">
+            <!-- Increased from text-sm to text-base -->
+            <p class="text-base text-slate-500 dark:text-slate-400 font-medium mb-8 leading-relaxed">
                 Need extra support this month? Purchase additional hours at your flat rate of <span class="text-slate-900 dark:text-white font-black">$25/hr</span>.
             </p>
             <div class="space-y-4">
                 <div class="flex items-center justify-between p-4 bg-slate-50 dark:bg-darkBg rounded-2xl border border-slate-100 dark:border-slate-800">
-                    <span class="font-bold text-sm">5 Hours</span>
-                    <button class="bg-primary text-white text-[10px] font-black px-4 py-2 rounded-lg hover:brightness-110 transition-all">$125</button>
-                </div>
-                <div class="flex items-center justify-between p-4 bg-slate-50 dark:bg-darkBg rounded-2xl border border-slate-100 dark:border-slate-800">
-                    <span class="font-bold text-sm">10 Hours</span>
-                    <button class="bg-primary text-white text-[10px] font-black px-4 py-2 rounded-lg hover:brightness-110 transition-all">$250</button>
+                    <!-- Increased from text-sm to text-base -->
+                    <span class="font-bold text-base">5 Hours</span>
+                    <!-- Increased from text-[10px] to text-xs -->
+                    <button class="bg-primary text-white text-xs font-black px-4 py-2 rounded-lg hover:brightness-110 transition-all">$125</button>
                 </div>
             </div>
-            <p class="mt-6 text-[10px] text-center font-bold text-slate-400 uppercase tracking-widest">Added to next month's invoice</p>
+            <!-- Increased from text-[10px] to text-xs -->
+            <p class="mt-6 text-xs text-center font-bold text-slate-400 uppercase tracking-widest">Added to next month's invoice</p>
         </div>
     </div>
 </section>
@@ -467,42 +572,50 @@
     <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div class="flex items-center gap-4">
             <div class="bg-white dark:bg-surface border border-slate-200 dark:border-slate-700 rounded-2xl p-1 flex">
-                <button class="px-6 py-2 bg-primary text-white rounded-xl text-xs font-black uppercase tracking-widest shadow-lg shadow-primary/20">List</button>
-                <button class="px-6 py-2 text-slate-400 text-xs font-black uppercase tracking-widest hover:text-primary transition-all">Board</button>
+                <!-- Increased from text-xs to text-sm -->
+                <button class="px-6 py-2 bg-primary text-white rounded-xl text-sm font-black uppercase tracking-widest shadow-lg shadow-primary/20">List</button>
+                <button class="px-6 py-2 text-slate-400 text-sm font-black uppercase tracking-widest hover:text-primary transition-all">Board</button>
             </div>
             <div class="relative hidden sm:block">
-                <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
-                <input type="text" placeholder="Search tasks..." class="bg-white dark:bg-surface border border-slate-200 dark:border-slate-700 pl-11 pr-4 py-3 rounded-2xl text-sm focus:ring-2 focus:ring-primary/20 outline-none w-64 transition-all">
+                <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-base"></i>
+                <!-- Increased from text-sm to text-base -->
+                <input type="text" placeholder="Search tasks..." class="bg-white dark:bg-surface border border-slate-200 dark:border-slate-700 pl-11 pr-4 py-3 rounded-2xl text-base focus:ring-2 focus:ring-primary/20 outline-none w-64 transition-all">
             </div>
         </div>
-        <button class="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-8 py-4 rounded-2xl font-black text-sm uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl">
+        <!-- Increased from text-sm to text-base -->
+        <button class="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-8 py-4 rounded-2xl font-black text-base uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl">
             <i class="fa-solid fa-plus mr-2"></i> Create New Task
         </button>
     </div>
 
+    <!-- Status Cards -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div class="bg-white dark:bg-surface p-6 rounded-[2rem] border-b-4 border-blue-500 shadow-sm">
-            <p class="text-[10px] font-black uppercase text-slate-400 tracking-widest mb-1">To Do</p>
-            <p class="text-2xl font-black dark:text-white">05</p>
+            <!-- Increased from text-[10px] to text-xs -->
+            <p class="text-xs font-black uppercase text-slate-400 tracking-widest mb-1">To Do</p>
+            <!-- Increased from text-2xl to text-3xl -->
+            <p class="text-3xl font-black dark:text-white">05</p>
         </div>
         <div class="bg-white dark:bg-surface p-6 rounded-[2rem] border-b-4 border-primary shadow-sm">
-            <p class="text-[10px] font-black uppercase text-slate-400 tracking-widest mb-1">In Progress</p>
-            <p class="text-2xl font-black dark:text-white">03</p>
+            <p class="text-xs font-black uppercase text-slate-400 tracking-widest mb-1">In Progress</p>
+            <p class="text-3xl font-black dark:text-white">03</p>
         </div>
         <div class="bg-white dark:bg-surface p-6 rounded-[2rem] border-b-4 border-amber-500 shadow-sm">
-            <p class="text-[10px] font-black uppercase text-slate-400 tracking-widest mb-1">Review</p>
-            <p class="text-2xl font-black dark:text-white">02</p>
+            <p class="text-xs font-black uppercase text-slate-400 tracking-widest mb-1">Review</p>
+            <p class="text-3xl font-black dark:text-white">02</p>
         </div>
         <div class="bg-white dark:bg-surface p-6 rounded-[2rem] border-b-4 border-green-500 shadow-sm">
-            <p class="text-[10px] font-black uppercase text-slate-400 tracking-widest mb-1">Completed</p>
-            <p class="text-2xl font-black dark:text-white">24</p>
+            <p class="text-xs font-black uppercase text-slate-400 tracking-widest mb-1">Completed</p>
+            <p class="text-3xl font-black dark:text-white">24</p>
         </div>
     </div>
 
+    <!-- Task Table -->
     <div class="bg-white dark:bg-surface rounded-[2.5rem] border border-slate-100 dark:border-slate-800 overflow-hidden shadow-xl shadow-slate-200/50 dark:shadow-none">
         <div class="overflow-x-auto">
             <table class="w-full text-left border-collapse">
-                <thead class="bg-slate-50 dark:bg-darkBg/50 text-[10px] font-black uppercase tracking-widest text-slate-400 border-b border-slate-100 dark:border-slate-800">
+                <!-- Increased from text-[10px] to text-xs -->
+                <thead class="bg-slate-50 dark:bg-darkBg/50 text-xs font-black uppercase tracking-widest text-slate-400 border-b border-slate-100 dark:border-slate-800">
                     <tr>
                         <th class="px-8 py-5">Task Details</th>
                         <th class="px-8 py-5">Assigned VA</th>
@@ -515,60 +628,65 @@
                     <tr class="group hover:bg-slate-50/50 dark:hover:bg-darkBg/20 transition-all">
                         <td class="px-8 py-6">
                             <div class="flex flex-col">
-                                <span class="font-black text-slate-900 dark:text-white text-sm mb-1 group-hover:text-primary transition-colors">April Social Media Content Calendar</span>
-                                <span class="text-[10px] text-slate-400 font-bold uppercase tracking-tighter flex items-center gap-2">
+                                <!-- Increased from text-sm to text-base -->
+                                <span class="font-black text-slate-900 dark:text-white text-base mb-1 group-hover:text-primary transition-colors">April Social Media Content Calendar</span>
+                                <!-- Increased from text-[10px] to text-xs -->
+                                <span class="text-xs text-slate-400 font-bold uppercase tracking-tighter flex items-center gap-2">
                                     <i class="fa-solid fa-paperclip"></i> 3 Attachments • Due: Apr 12
                                 </span>
                             </div>
                         </td>
                         <td class="px-8 py-6">
                             <div class="flex items-center gap-3">
-                                <div class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center text-[10px] font-black">JD</div>
-                                <span class="text-xs font-bold dark:text-slate-300">Jane Doe</span>
+                                <div class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center text-xs font-black">JD</div>
+                                <!-- Increased from text-xs to text-sm -->
+                                <span class="text-sm font-bold dark:text-slate-300">Jane Doe</span>
                             </div>
                         </td>
                         <td class="px-8 py-6">
-                            <span class="px-3 py-1 bg-rose-50 dark:bg-rose-900/20 text-primary text-[10px] font-black uppercase tracking-widest rounded-lg">High</span>
+                            <!-- Increased from text-[10px] to text-xs -->
+                            <span class="px-3 py-1 bg-rose-50 dark:bg-rose-900/20 text-primary text-xs font-black uppercase tracking-widest rounded-lg">High</span>
                         </td>
                         <td class="px-8 py-6">
                             <div class="flex items-center gap-2">
                                 <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-                                <span class="text-xs font-bold text-primary italic">In Progress</span>
+                                <!-- Increased from text-xs to text-sm -->
+                                <span class="text-sm font-bold text-primary italic">In Progress</span>
                             </div>
                         </td>
                         <td class="px-8 py-6 text-right">
-                            <button class="w-8 h-8 rounded-lg hover:bg-slate-100 dark:hover:bg-darkBg text-slate-400 hover:text-primary transition-all">
+                            <button class="w-8 h-8 rounded-lg hover:bg-slate-100 dark:hover:bg-darkBg text-slate-400 hover:text-primary transition-all text-base">
                                 <i class="fa-solid fa-ellipsis-vertical"></i>
                             </button>
                         </td>
                     </tr>
-
+                    <!-- Row 2 -->
                     <tr class="group hover:bg-slate-50/50 dark:hover:bg-darkBg/20 transition-all">
                         <td class="px-8 py-6">
                             <div class="flex flex-col">
-                                <span class="font-black text-slate-900 dark:text-white text-sm mb-1 group-hover:text-primary transition-colors">Q1 Expense Reconciliation</span>
-                                <span class="text-[10px] text-slate-400 font-bold uppercase tracking-tighter flex items-center gap-2">
+                                <span class="font-black text-slate-900 dark:text-white text-base mb-1 group-hover:text-primary transition-colors">Q1 Expense Reconciliation</span>
+                                <span class="text-xs text-slate-400 font-bold uppercase tracking-tighter flex items-center gap-2">
                                     <i class="fa-solid fa-check-double text-green-500"></i> Verified • Completed Yesterday
                                 </span>
                             </div>
                         </td>
                         <td class="px-8 py-6">
                             <div class="flex items-center gap-3">
-                                <div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-darkBg text-slate-400 flex items-center justify-center text-[10px] font-black">MT</div>
-                                <span class="text-xs font-bold dark:text-slate-300">Mark T.</span>
+                                <div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-darkBg text-slate-400 flex items-center justify-center text-xs font-black">MT</div>
+                                <span class="text-sm font-bold dark:text-slate-300">Mark T.</span>
                             </div>
                         </td>
                         <td class="px-8 py-6">
-                            <span class="px-3 py-1 bg-slate-100 dark:bg-darkBg text-slate-400 text-[10px] font-black uppercase tracking-widest rounded-lg">Medium</span>
+                            <span class="px-3 py-1 bg-slate-100 dark:bg-darkBg text-slate-400 text-xs font-black uppercase tracking-widest rounded-lg">Medium</span>
                         </td>
                         <td class="px-8 py-6">
                             <div class="flex items-center gap-2">
                                 <span class="w-2 h-2 rounded-full bg-green-500"></span>
-                                <span class="text-xs font-bold text-green-500 italic">Done</span>
+                                <span class="text-sm font-bold text-green-500 italic">Done</span>
                             </div>
                         </td>
                         <td class="px-8 py-6 text-right">
-                            <button class="w-8 h-8 rounded-lg hover:bg-slate-100 dark:hover:bg-darkBg text-slate-400 hover:text-primary transition-all">
+                            <button class="w-8 h-8 rounded-lg hover:bg-slate-100 dark:hover:bg-darkBg text-slate-400 hover:text-primary transition-all text-base">
                                 <i class="fa-solid fa-ellipsis-vertical"></i>
                             </button>
                         </td>
@@ -576,14 +694,16 @@
                 </tbody>
             </table>
         </div>
+        <!-- Pagination -->
         <div class="p-6 bg-slate-50 dark:bg-darkBg/30 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center">
-            <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Showing 2 of 12 Tasks</p>
+            <!-- Increased from text-[10px] to text-xs -->
+            <p class="text-xs font-black text-slate-400 uppercase tracking-widest">Showing 2 of 12 Tasks</p>
             <div class="flex gap-2">
                 <button class="p-2 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-white dark:hover:bg-surface transition-all disabled:opacity-30" disabled>
-                    <i class="fa-solid fa-chevron-left text-xs"></i>
+                    <i class="fa-solid fa-chevron-left text-sm"></i>
                 </button>
                 <button class="p-2 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-white dark:hover:bg-surface transition-all">
-                    <i class="fa-solid fa-chevron-right text-xs"></i>
+                    <i class="fa-solid fa-chevron-right text-sm"></i>
                 </button>
             </div>
         </div>

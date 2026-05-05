@@ -89,10 +89,20 @@
 </script>
 
             <div class="hidden lg:flex items-center xl:space-x-5 lg:space-x-3">
-                <button onclick="toggleTheme()" class="w-10 h-10 flex items-center justify-center rounded-full border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
-                    <i id="theme-icon" class="fa-solid fa-moon text-slate-500"></i>
-                </button>
-                <button onclick="toggleDirection()" class="text-[10px] font-black px-2 py-1 border-2 border-primary text-primary rounded uppercase">LTR</button>
+                <div class="flex items-center gap-3">
+    <!-- Theme Toggle -->
+    <button onclick="toggleTheme()" 
+            class="w-10 h-10 flex items-center justify-center rounded-xl border-2 border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all active:scale-90 box-border">
+        <i id="theme-icon" class="fa-solid fa-moon text-slate-500"></i>
+    </button>
+
+    <!-- Direction Toggle -->
+    <!-- Added w-10 h-10 and flex centering to match the Theme button exactly -->
+    <button onclick="toggleDirection()" 
+            class="w-10 h-10 flex items-center justify-center rounded-xl border-2 border-primary text-primary bg-transparent hover:bg-primary/5 transition-all active:scale-90 font-black text-[10px] uppercase tracking-tighter box-border">
+        LTR
+    </button>
+</div>
                 
                 <a href="login.html" class="nav-link border-2 border-primary text-primary px-6 py-2.5 rounded-full font-bold text-sm uppercase tracking-widest hover:bg-primary hover:text-white transition-all active:scale-95">
                     Login
@@ -103,14 +113,21 @@
                 </a>
             </div>
 
-            <div class="lg:hidden flex items-center gap-3">
-                <button onclick="toggleTheme()" class="p-2 transition-colors hover:text-primary">
-                    <i class="fa-solid fa-circle-half-stroke text-primary text-lg"></i>
-                </button>
-                <button onclick="toggleMenu()" class="w-11 h-11 bg-primary text-white rounded-xl flex items-center justify-center shadow-lg shadow-primary/20 active:scale-90 transition-all">
-                    <i class="fa-solid fa-bars-staggered text-lg"></i>
-                </button>
-            </div>
+           <div class="lg:hidden flex items-center gap-3">
+    <!-- Theme Toggle -->
+    <!-- Added 'box-border' to ensure the 2px border stays INSIDE the 44px (w-11) limit -->
+    <button onclick="toggleTheme()" 
+            class="w-11 h-11 flex items-center justify-center rounded-xl border-2 border-slate-100 dark:border-white/10 text-primary transition-all hover:bg-slate-50 dark:hover:bg-white/5 active:scale-90 box-border">
+        <i class="fa-solid fa-circle-half-stroke text-lg"></i>
+    </button>
+
+    <!-- Menu Button -->
+    <!-- Added a transparent border to match the Theme Toggle's geometry exactly -->
+    <button onclick="toggleMenu()" 
+            class="w-11 h-11 flex items-center justify-center rounded-xl bg-primary text-white border-2 border-transparent shadow-lg shadow-primary/20 transition-all active:scale-90 box-border">
+        <i class="fa-solid fa-bars-staggered text-lg"></i>
+    </button>
+</div>
         </div>
     </div>
 </nav>

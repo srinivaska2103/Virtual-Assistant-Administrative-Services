@@ -40,12 +40,20 @@
             <span class="font-black text-xl md:text-2xl tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-primary to-rose-400">ASSIST</span>
         </a>
 
-        <div class="flex items-center gap-2 md:gap-4">
-            <button onclick="toggleDirection()" class="text-[9px] md:text-[10px] font-black px-2 md:px-3 py-1 border-2 border-slate-900 dark:border-white rounded uppercase hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-darkBg transition">LTR</button>
-            <button onclick="toggleTheme()" class="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center rounded-full bg-white dark:bg-surface shadow-md hover:text-primary transition">
-                <i id="theme-icon" class="fa-solid fa-moon"></i>
-            </button>
-        </div>
+                     <div class="flex items-center gap-3">
+    <!-- Theme Toggle -->
+    <button onclick="toggleTheme()" 
+            class="w-10 h-10 flex items-center justify-center rounded-xl border-2 border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all active:scale-90 box-border">
+        <i id="theme-icon" class="fa-solid fa-moon text-slate-500"></i>
+    </button>
+
+    <!-- Direction Toggle -->
+    <!-- Added w-10 h-10 and flex centering to match the Theme button exactly -->
+    <button onclick="toggleDirection()" 
+            class="w-10 h-10 flex items-center justify-center rounded-xl border-2 border-primary text-primary bg-transparent hover:bg-primary/5 transition-all active:scale-90 font-black text-[10px] uppercase tracking-tighter box-border">
+        LTR
+    </button>
+</div>
     </header>
 
     <main class="flex-grow flex flex-col items-center justify-center p-6 relative">

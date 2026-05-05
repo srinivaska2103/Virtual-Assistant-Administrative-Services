@@ -89,10 +89,20 @@
 </script>
 
             <div class="hidden lg:flex items-center xl:space-x-5 lg:space-x-3">
-                <button onclick="toggleTheme()" class="w-10 h-10 flex items-center justify-center rounded-full border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
-                    <i id="theme-icon" class="fa-solid fa-moon text-slate-500"></i>
-                </button>
-                <button onclick="toggleDirection()" class="text-[10px] font-black px-2 py-1 border-2 border-primary text-primary rounded uppercase">LTR</button>
+                <div class="flex items-center gap-3">
+    <!-- Theme Toggle -->
+    <button onclick="toggleTheme()" 
+            class="w-10 h-10 flex items-center justify-center rounded-xl border-2 border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all active:scale-90 box-border">
+        <i id="theme-icon" class="fa-solid fa-moon text-slate-500"></i>
+    </button>
+
+    <!-- Direction Toggle -->
+    <!-- Added w-10 h-10 and flex centering to match the Theme button exactly -->
+    <button onclick="toggleDirection()" 
+            class="w-10 h-10 flex items-center justify-center rounded-xl border-2 border-primary text-primary bg-transparent hover:bg-primary/5 transition-all active:scale-90 font-black text-[10px] uppercase tracking-tighter box-border">
+        LTR
+    </button>
+</div>
                 
                 <a href="login.html" class="nav-link border-2 border-primary text-primary px-6 py-2.5 rounded-full font-bold text-sm uppercase tracking-widest hover:bg-primary hover:text-white transition-all active:scale-95">
                     Login
@@ -103,14 +113,21 @@
                 </a>
             </div>
 
-            <div class="lg:hidden flex items-center gap-3">
-                <button onclick="toggleTheme()" class="p-2 transition-colors hover:text-primary">
-                    <i class="fa-solid fa-circle-half-stroke text-primary text-lg"></i>
-                </button>
-                <button onclick="toggleMenu()" class="w-11 h-11 bg-primary text-white rounded-xl flex items-center justify-center shadow-lg shadow-primary/20 active:scale-90 transition-all">
-                    <i class="fa-solid fa-bars-staggered text-lg"></i>
-                </button>
-            </div>
+           <div class="lg:hidden flex items-center gap-3">
+    <!-- Theme Toggle -->
+    <!-- Added 'box-border' to ensure the 2px border stays INSIDE the 44px (w-11) limit -->
+    <button onclick="toggleTheme()" 
+            class="w-11 h-11 flex items-center justify-center rounded-xl border-2 border-slate-100 dark:border-white/10 text-primary transition-all hover:bg-slate-50 dark:hover:bg-white/5 active:scale-90 box-border">
+        <i class="fa-solid fa-circle-half-stroke text-lg"></i>
+    </button>
+
+    <!-- Menu Button -->
+    <!-- Added a transparent border to match the Theme Toggle's geometry exactly -->
+    <button onclick="toggleMenu()" 
+            class="w-11 h-11 flex items-center justify-center rounded-xl bg-primary text-white border-2 border-transparent shadow-lg shadow-primary/20 transition-all active:scale-90 box-border">
+        <i class="fa-solid fa-bars-staggered text-lg"></i>
+    </button>
+</div>
         </div>
     </div>
 </nav>
@@ -304,8 +321,8 @@
 
             <div class="w-full lg:w-1/2">
                 <h2 class="text-xs font-black tracking-[0.3em] text-primary uppercase mb-6 reveal">Behind the Brand</h2>
-                <h3 class="text-3xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tighter mb-8 reveal delay-100">
-                    We started with a <span class="text-primary italic">simple mission.</span>
+                <h3 class="text-3xl md:text-5xl font-semibold text-slate-900 dark:text-white tracking-tighter mb-8 reveal delay-100">
+                    We started with a <span class="text-primary ">simple mission.</span>
                 </h3>
 
                 <div class="space-y-6 text-slate-600 dark:text-slate-400 font-medium leading-relaxed reveal delay-200">
@@ -355,7 +372,7 @@
                 </div> -->
                 
                 <h3 class="text-xs font-black tracking-[0.4em] text-primary uppercase mb-6">Our Mission</h3>
-                <p class="text-2xl md:text-3xl font-black text-slate-900 dark:text-white leading-tight tracking-tighter ">
+                <p class="text-2xl md:text-3xl font-semibold text-slate-900 dark:text-white leading-tight tracking-tighter ">
                     “To <span class="text-primary">simplify</span> business operations by providing reliable, high-quality virtual assistance.”
                 </p>
                 
@@ -368,7 +385,7 @@
                 </div> -->
                 
                 <h3 class="text-xs font-black tracking-[0.4em] text-primary uppercase mb-6">Our Vision</h3>
-                <p class="text-2xl md:text-3xl font-black text-white leading-tight tracking-tighter italic">
+                <p class="text-2xl md:text-3xl font-semibold text-white leading-tight tracking-tighter ">
                     “To become the go-to <span class="text-primary">global partner</span> for remote business support.”
                 </p>
 
@@ -387,7 +404,7 @@
         
         <div class="text-center mb-16 reveal">
             <h2 class="text-xs font-black tracking-[0.3em] text-primary uppercase mb-4">Niche Expertise</h2>
-            <h3 class="text-3xl md:text-5xl font-black tracking-tighter text-slate-900 dark:text-white">
+            <h3 class="text-3xl md:text-5xl font-semibold tracking-tighter text-slate-900 dark:text-white">
                 Solutions Tailored for <span class="text-primary ">Your Industry</span>
             </h3>
         </div>
@@ -478,7 +495,7 @@
         
         <div class="text-center mb-20 reveal">
             <h2 class="text-xs font-black tracking-[0.4em] text-primary uppercase mb-4">Our Track Record</h2>
-            <h3 class="text-3xl md:text-5xl font-black text-white tracking-tighter">
+            <h3 class="text-3xl md:text-5xl font-semibold text-white tracking-tighter">
                 Milestones That <span class="text-primary ">Matter.</span>
             </h3>
         </div>
@@ -490,7 +507,7 @@
                     <i class="fa-solid fa-users-gear text-3xl"></i>
                 </div>
                 <div class="flex items-baseline gap-1 mb-2">
-                    <span class="count-milestone text-6xl font-black text-white tracking-tighter" data-target="500">0</span>
+                    <span class="count-milestone text-6xl font-semibold text-white tracking-tighter" data-target="500">0</span>
                     <span class="text-4xl font-black text-primary">+</span>
                 </div>
                 <p class="text-xs font-black uppercase tracking-[0.3em] text-slate-400">Global Clients Served</p>
@@ -502,7 +519,7 @@
                     <i class="fa-solid fa-check-double text-3xl"></i>
                 </div>
                 <div class="flex items-baseline gap-1 mb-2">
-                    <span class="count-milestone text-6xl font-black text-white tracking-tighter" data-target="10000">0</span>
+                    <span class="count-milestone text-6xl font-semibold text-white tracking-tighter" data-target="10000">0</span>
                     <span class="text-4xl font-black text-primary">+</span>
                 </div>
                 <p class="text-xs font-black uppercase tracking-[0.3em] text-slate-400">Tasks Successfully Completed</p>
@@ -514,7 +531,7 @@
                     <i class="fa-solid fa-face-smile text-3xl"></i>
                 </div>
                 <div class="flex items-baseline gap-1 mb-2">
-                    <span class="count-milestone text-6xl font-black text-white tracking-tighter" data-target="98">0</span>
+                    <span class="count-milestone text-6xl font-semibold text-white tracking-tighter" data-target="98">0</span>
                     <span class="text-4xl font-black text-primary">%</span>
                 </div>
                 <p class="text-xs font-black uppercase tracking-[0.3em] text-slate-400">Client Satisfaction Rate</p>
@@ -569,7 +586,7 @@
         <div class="flex flex-col sm:flex-row justify-between items-center sm:items-end mb-12 md:mb-16 reveal">
             <div class="max-w-2xl text-center sm:text-left mb-6 sm:mb-0">
                 <h2 class="text-xs font-black tracking-[0.3em] text-primary uppercase mb-4">Human-Led Excellence</h2>
-                <h3 class="text-3xl md:text-5xl font-black tracking-tighter text-slate-900 dark:text-white leading-tight">
+                <h3 class="text-3xl md:text-5xl font-semibold tracking-tighter text-slate-900 dark:text-white leading-tight">
                     Meet the Experts Behind <span class="text-primary italic">Your Growth</span>
                 </h3>
             </div>
@@ -581,69 +598,77 @@
         </div>
 
        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
-        
-        <div class="reveal group relative bg-slate-50 dark:bg-surface rounded-[2rem] overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 flex flex-col sm:flex-row lg:flex-col">
-            <div class="relative w-full sm:w-2/5 lg:w-full h-64 sm:h-auto lg:h-72 overflow-hidden">
-                <img src="assets/t2" alt="Sarah" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700">
-                <div class="absolute top-4 left-4 bg-white/90 dark:bg-darkBg/90 backdrop-blur-md px-3 py-1.5 rounded-full shadow-lg z-10">
-                    <p class="text-[9px] font-black text-primary uppercase tracking-widest">5+ Years Exp.</p>
-                </div>
-            </div>
-            <div class="flex-1 p-6 md:p-8 pt-6 sm:pt-8 relative flex flex-col justify-center">
-                <h4 class="text-xl md:text-2xl font-black text-slate-900 dark:text-white mb-1">Sarah Jenkins</h4>
-                <p class="text-primary font-bold text-xs md:text-sm mb-4 uppercase tracking-widest italic">Senior Executive VA</p>
-                <div class="flex flex-wrap gap-1.5 mb-6">
-                    <span class="px-2.5 py-1 bg-white dark:bg-darkBg border border-slate-100 dark:border-slate-700 rounded-lg text-[9px] font-bold text-slate-500 uppercase tracking-wider">CRM</span>
-                    <span class="px-2.5 py-1 bg-white dark:bg-darkBg border border-slate-100 dark:border-slate-700 rounded-lg text-[9px] font-bold text-slate-500 uppercase tracking-wider">Excel</span>
-                </div>
-                <a href="#" class="block text-center w-full py-3 md:py-4 rounded-2xl border-2 border-primary text-primary font-black uppercase text-[10px] tracking-[0.2em] hover:bg-primary hover:text-white transition-all">
-                    View Full Profile
-                </a>
+   <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
+    
+    <!-- Sarah Jenkins -->
+    <div class="reveal group relative bg-slate-50 dark:bg-surface rounded-[2rem] overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 flex flex-col sm:flex-row lg:flex-col">
+        <!-- Fix: Set min-h for small screens to prevent collapse, maintain full width -->
+        <div class="relative w-full sm:w-2/5 lg:w-full h-64 xs:h-72 sm:h-auto lg:h-72 overflow-hidden">
+            <img src="assets/t2" alt="Sarah" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700">
+            <div class="absolute top-4 left-4 bg-white/90 dark:bg-darkBg/90 backdrop-blur-md px-3 py-1.5 rounded-full shadow-lg z-10">
+                <p class="text-[9px] font-black text-primary uppercase tracking-widest leading-none">5+ Years Exp.</p>
             </div>
         </div>
 
-        <div class="reveal delay-100 group relative bg-slate-50 dark:bg-surface rounded-[2rem] overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 flex flex-col sm:flex-row lg:flex-col">
-            <div class="relative w-full sm:w-2/5 lg:w-full h-64 sm:h-auto lg:h-72 overflow-hidden">
-                <img src="assets/t4" alt="David" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700">
-                <div class="absolute top-4 left-4 bg-white/90 dark:bg-darkBg/90 backdrop-blur-md px-3 py-1.5 rounded-full shadow-lg z-10">
-                    <p class="text-[9px] font-black text-primary uppercase tracking-widest">7+ Years Exp.</p>
-                </div>
+        <!-- Fix: Use px-5 for mobile (360px) to give content more room, md:p-8 for desktop -->
+        <div class="flex-1 px-5 py-6 md:p-8 pt-6 relative flex flex-col justify-center">
+            <h4 class="text-xl md:text-2xl font-black text-slate-900 dark:text-white mb-1">Sarah Jenkins</h4>
+            <p class="text-primary font-bold text-xs md:text-sm mb-4 uppercase tracking-widest italic">Senior Executive VA</p>
+            
+            <div class="flex flex-wrap gap-1.5 mb-6">
+                <span class="px-2.5 py-1 bg-white dark:bg-darkBg border border-slate-100 dark:border-slate-700 rounded-lg text-[9px] font-bold text-slate-500 uppercase tracking-wider">CRM</span>
+                <span class="px-2.5 py-1 bg-white dark:bg-darkBg border border-slate-100 dark:border-slate-700 rounded-lg text-[9px] font-bold text-slate-500 uppercase tracking-wider">Excel</span>
             </div>
-            <div class="flex-1 p-6 md:p-8 pt-6 sm:pt-8 relative flex flex-col justify-center">
-                <h4 class="text-xl md:text-2xl font-black text-slate-900 dark:text-white mb-1">David Chen</h4>
-                <p class="text-primary font-bold text-xs md:text-sm mb-4 uppercase tracking-widest italic">Project Coordinator</p>
-                <div class="flex flex-wrap gap-1.5 mb-6">
-                    <span class="px-2.5 py-1 bg-white dark:bg-darkBg border border-slate-100 dark:border-slate-700 rounded-lg text-[9px] font-bold text-slate-500 uppercase tracking-wider">Asana</span>
-                    <span class="px-2.5 py-1 bg-white dark:bg-darkBg border border-slate-100 dark:border-slate-700 rounded-lg text-[9px] font-bold text-slate-500 uppercase tracking-wider">Data</span>
-                </div>
-                <a href="#" class="block text-center w-full py-3 md:py-4 rounded-2xl border-2 border-primary text-primary font-black uppercase text-[10px] tracking-[0.2em] hover:bg-primary hover:text-white transition-all">
-                    View Full Profile
-                </a>
-            </div>
-        </div>
 
-        <div class="reveal delay-200 group relative bg-slate-50 dark:bg-surface rounded-[2rem] overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 flex flex-col sm:flex-row lg:flex-col">
-            <div class="relative w-full sm:w-2/5 lg:w-full h-64 sm:h-auto lg:h-72 overflow-hidden">
-                <img src="assets/t1" alt="Elena" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700">
-                <div class="absolute top-4 left-4 bg-white/90 dark:bg-darkBg/90 backdrop-blur-md px-3 py-1.5 rounded-full shadow-lg z-10">
-                    <p class="text-[9px] font-black text-primary uppercase tracking-widest">4+ Years Exp.</p>
-                </div>
-            </div>
-            <div class="flex-1 p-6 md:p-8 pt-6 sm:pt-8 relative flex flex-col justify-center">
-                <h4 class="text-xl md:text-2xl font-black text-slate-900 dark:text-white mb-1">Elena Rodriguez</h4>
-                <p class="text-primary font-bold text-xs md:text-sm mb-4 uppercase tracking-widest italic">Customer Success</p>
-                <div class="flex flex-wrap gap-1.5 mb-6">
-                    <span class="px-2.5 py-1 bg-white dark:bg-darkBg border border-slate-100 dark:border-slate-700 rounded-lg text-[9px] font-bold text-slate-500 uppercase tracking-wider">Zendesk</span>
-                    <span class="px-2.5 py-1 bg-white dark:bg-darkBg border border-slate-100 dark:border-slate-700 rounded-lg text-[9px] font-bold text-slate-500 uppercase tracking-wider">Social</span>
-                </div>
-                <a href="#" class="block text-center w-full py-3 md:py-4 rounded-2xl border-2 border-primary text-primary font-black uppercase text-[10px] tracking-[0.2em] hover:bg-primary hover:text-white transition-all">
-                    View Full Profile
-                </a>
-            </div>
+            <!-- Fix: Button w-full with relative tracking for smaller width -->
+            <a href="#" class="block text-center w-full py-3.5 md:py-4 rounded-2xl border-2 border-primary text-primary font-black uppercase text-[10px] tracking-[0.15em] sm:tracking-[0.2em] hover:bg-primary hover:text-white transition-all">
+                View Full Profile
+            </a>
         </div>
-
     </div>
+
+    <!-- David Chen -->
+    <div class="reveal delay-100 group relative bg-slate-50 dark:bg-surface rounded-[2rem] overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 flex flex-col sm:flex-row lg:flex-col">
+        <div class="relative w-full sm:w-2/5 lg:w-full h-64 xs:h-72 sm:h-auto lg:h-72 overflow-hidden">
+            <img src="assets/t4" alt="David" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700">
+            <div class="absolute top-4 left-4 bg-white/90 dark:bg-darkBg/90 backdrop-blur-md px-3 py-1.5 rounded-full shadow-lg z-10">
+                <p class="text-[9px] font-black text-primary uppercase tracking-widest leading-none">7+ Years Exp.</p>
+            </div>
+        </div>
+        <div class="flex-1 px-5 py-6 md:p-8 pt-6 relative flex flex-col justify-center">
+            <h4 class="text-xl md:text-2xl font-black text-slate-900 dark:text-white mb-1">David Chen</h4>
+            <p class="text-primary font-bold text-xs md:text-sm mb-4 uppercase tracking-widest italic">Project Coordinator</p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+                <span class="px-2.5 py-1 bg-white dark:bg-darkBg border border-slate-100 dark:border-slate-700 rounded-lg text-[9px] font-bold text-slate-500 uppercase tracking-wider">Asana</span>
+                <span class="px-2.5 py-1 bg-white dark:bg-darkBg border border-slate-100 dark:border-slate-700 rounded-lg text-[9px] font-bold text-slate-500 uppercase tracking-wider">Data</span>
+            </div>
+            <a href="#" class="block text-center w-full py-3.5 md:py-4 rounded-2xl border-2 border-primary text-primary font-black uppercase text-[10px] tracking-[0.15em] sm:tracking-[0.2em] hover:bg-primary hover:text-white transition-all">
+                View Full Profile
+            </a>
+        </div>
+    </div>
+
+    <!-- Elena Rodriguez -->
+    <div class="reveal delay-200 group relative bg-slate-50 dark:bg-surface rounded-[2rem] overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 flex flex-col sm:flex-row lg:flex-col">
+        <div class="relative w-full sm:w-2/5 lg:w-full h-64 xs:h-72 sm:h-auto lg:h-72 overflow-hidden">
+            <img src="assets/t1" alt="Elena" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700">
+            <div class="absolute top-4 left-4 bg-white/90 dark:bg-darkBg/90 backdrop-blur-md px-3 py-1.5 rounded-full shadow-lg z-10">
+                <p class="text-[9px] font-black text-primary uppercase tracking-widest leading-none">4+ Years Exp.</p>
+            </div>
+        </div>
+        <div class="flex-1 px-5 py-6 md:p-8 pt-6 relative flex flex-col justify-center">
+            <h4 class="text-xl md:text-2xl font-black text-slate-900 dark:text-white mb-1">Elena Rodriguez</h4>
+            <p class="text-primary font-bold text-xs md:text-sm mb-4 uppercase tracking-widest italic">Customer Success</p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+                <span class="px-2.5 py-1 bg-white dark:bg-darkBg border border-slate-100 dark:border-slate-700 rounded-lg text-[9px] font-bold text-slate-500 uppercase tracking-wider">Zendesk</span>
+                <span class="px-2.5 py-1 bg-white dark:bg-darkBg border border-slate-100 dark:border-slate-700 rounded-lg text-[9px] font-bold text-slate-500 uppercase tracking-wider">Social</span>
+            </div>
+            <a href="#" class="block text-center w-full py-3.5 md:py-4 rounded-2xl border-2 border-primary text-primary font-black uppercase text-[10px] tracking-[0.15em] sm:tracking-[0.2em] hover:bg-primary hover:text-white transition-all">
+                View Full Profile
+            </a>
+        </div>
+    </div>
+</div>
 </div>
 
         <div class="mt-12 text-center sm:hidden reveal delay-300">
@@ -661,7 +686,7 @@
         
         <div class="text-center mb-16 reveal">
             <h2 class="text-xs font-black tracking-[0.3em] text-primary uppercase mb-4">The Elite Advantage</h2>
-            <h3 class="text-3xl md:text-5xl font-black tracking-tighter text-slate-900 dark:text-white leading-tight">
+            <h3 class="text-3xl md:text-5xl font-semibold tracking-tighter text-slate-900 dark:text-white leading-tight">
                 Why Industry Leaders <br class="hidden md:block"> <span class="text-primary ">Trust Us</span>
             </h3>
         </div>
@@ -736,7 +761,7 @@
                     <span class="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-white/80">Onboarding Now Open</span>
                 </div>
 
-                <h2 class="reveal delay-100 text-4xl md:text-6xl font-black text-white tracking-tighter mb-8 leading-tight">
+                <h2 class="reveal delay-100 text-4xl md:text-6xl font-semibold text-white tracking-tighter mb-8 leading-tight">
                     Ready to Work <br> <span class="text-primary ">Smarter?</span>
                 </h2>
                 
@@ -745,12 +770,12 @@
                 </p>
 
                 <div class="reveal delay-300 flex flex-col sm:flex-row justify-center items-center gap-4 md:gap-6">
-                    <a href="regeister.html" class="w-full sm:w-auto bg-primary text-white px-10 py-5 rounded-2xl font-black text-lg shadow-xl shadow-primary/30 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3 group/btn">
+                    <a href="regeister.html" class="w-full sm:w-auto bg-primary text-white px-10 py-5 rounded-2xl font-semibold text-lg shadow-xl shadow-primary/30 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3 group/btn">
                         Hire a Virtual Assistant
                         <i class="fa-solid fa-bolt-lightning group-hover/btn:animate-bounce"></i>
                     </a>
                     
-                    <a href="contact.html" class="w-full sm:w-auto px-10 py-5 rounded-2xl font-black text-lg text-white border-2 border-white/10 hover:border-primary hover:text-primary transition-all flex items-center justify-center gap-3">
+                    <a href="contact.html" class="w-full sm:w-auto px-10 py-5 rounded-2xl font-semibold text-lg text-white border-2 border-white/10 hover:border-primary hover:text-primary transition-all flex items-center justify-center gap-3">
                         Book a Free Consultation
                         <i class="fa-solid fa-calendar-check"></i>
                     </a>

@@ -89,10 +89,20 @@
 </script>
 
             <div class="hidden lg:flex items-center xl:space-x-5 lg:space-x-3">
-                <button onclick="toggleTheme()" class="w-10 h-10 flex items-center justify-center rounded-full border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
-                    <i id="theme-icon" class="fa-solid fa-moon text-slate-500"></i>
-                </button>
-                <button onclick="toggleDirection()" class="text-[10px] font-black px-2 py-1 border-2 border-primary text-primary rounded uppercase">LTR</button>
+                <div class="flex items-center gap-3">
+    <!-- Theme Toggle -->
+    <button onclick="toggleTheme()" 
+            class="w-10 h-10 flex items-center justify-center rounded-xl border-2 border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all active:scale-90 box-border">
+        <i id="theme-icon" class="fa-solid fa-moon text-slate-500"></i>
+    </button>
+
+    <!-- Direction Toggle -->
+    <!-- Added w-10 h-10 and flex centering to match the Theme button exactly -->
+    <button onclick="toggleDirection()" 
+            class="w-10 h-10 flex items-center justify-center rounded-xl border-2 border-primary text-primary bg-transparent hover:bg-primary/5 transition-all active:scale-90 font-black text-[10px] uppercase tracking-tighter box-border">
+        LTR
+    </button>
+</div>
                 
                 <a href="login.html" class="nav-link border-2 border-primary text-primary px-6 py-2.5 rounded-full font-bold text-sm uppercase tracking-widest hover:bg-primary hover:text-white transition-all active:scale-95">
                     Login
@@ -103,14 +113,21 @@
                 </a>
             </div>
 
-            <div class="lg:hidden flex items-center gap-3">
-                <button onclick="toggleTheme()" class="p-2 transition-colors hover:text-primary">
-                    <i class="fa-solid fa-circle-half-stroke text-primary text-lg"></i>
-                </button>
-                <button onclick="toggleMenu()" class="w-11 h-11 bg-primary text-white rounded-xl flex items-center justify-center shadow-lg shadow-primary/20 active:scale-90 transition-all">
-                    <i class="fa-solid fa-bars-staggered text-lg"></i>
-                </button>
-            </div>
+           <div class="lg:hidden flex items-center gap-3">
+    <!-- Theme Toggle -->
+    <!-- Added 'box-border' to ensure the 2px border stays INSIDE the 44px (w-11) limit -->
+    <button onclick="toggleTheme()" 
+            class="w-11 h-11 flex items-center justify-center rounded-xl border-2 border-slate-100 dark:border-white/10 text-primary transition-all hover:bg-slate-50 dark:hover:bg-white/5 active:scale-90 box-border">
+        <i class="fa-solid fa-circle-half-stroke text-lg"></i>
+    </button>
+
+    <!-- Menu Button -->
+    <!-- Added a transparent border to match the Theme Toggle's geometry exactly -->
+    <button onclick="toggleMenu()" 
+            class="w-11 h-11 flex items-center justify-center rounded-xl bg-primary text-white border-2 border-transparent shadow-lg shadow-primary/20 transition-all active:scale-90 box-border">
+        <i class="fa-solid fa-bars-staggered text-lg"></i>
+    </button>
+</div>
         </div>
     </div>
 </nav>
@@ -304,7 +321,7 @@
             
             <div class="w-full lg:w-1/2">
                 <h2 class="text-xs font-black tracking-[0.3em] text-primary uppercase mb-6 reveal">The Struggle</h2>
-                <h3 class="text-3xl md:text-5xl font-black text-white tracking-tighter mb-10 reveal delay-100">
+                <h3 class="text-3xl md:text-5xl font-semibold text-white tracking-tighter mb-10 reveal delay-100">
                     Business shouldn't feel like <span class=" text-slate-500 line-through">exhaustion.</span>
                 </h3>
 
@@ -339,7 +356,7 @@
                 </div>
 
                 <div class="mt-12 reveal delay-300">
-                    <p class="text-2xl md:text-4xl font-black text-white italic">
+                    <p class="text-2xl md:text-4xl font-semibold text-white">
                         "We fix <span class="text-primary underline decoration-4 underline-offset-8">all of that.</span>"
                     </p>
                 </div>
@@ -347,9 +364,7 @@
 
             <div class="w-full lg:w-1/2 reveal delay-400">
                 <div class="bg-white rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-primary/20 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 bg-primary text-white px-8 py-2 rounded-bl-[2rem] text-[10px] font-black uppercase tracking-widest">
-                        Elite Solution
-                    </div>
+                    
 
                     <h4 class="text-3xl md:text-4xl font-black text-slate-900 tracking-tighter mb-8 leading-tight">
                         Meet Your Dedicated <br> <span class="text-primary">Virtual Assistant</span>
@@ -397,56 +412,73 @@
     </div>
 </section>
 
-<section id="services" class="py-24 bg-white dark:bg-darkBg relative overflow-hidden">
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-slate-200 dark:via-slate-800 to-transparent"></div>
+<section id="services" class="py-24 bg-[#0a0f1a] relative overflow-hidden">
+    <!-- Subtle top border glow -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
+
+    <!-- Ambient background glows for depth -->
+    <div class="absolute -top-24 -left-24 w-96 h-96 bg-primary/10 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute top-1/2 -right-24 w-80 h-80 bg-blue-500/5 rounded-full blur-[100px] pointer-events-none"></div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <!-- Header -->
         <div class="text-center mb-16 reveal">
             <h2 class="text-xs font-black tracking-[0.3em] text-primary uppercase mb-4">What We Do</h2>
-            <h3 class="text-3xl md:text-5xl font-black tracking-tighter text-slate-900 dark:text-white">
+            <h3 class="text-3xl md:text-5xl font-semibold tracking-tighter text-white">
                 Solutions Tailored for <span class="text-primary">Your Success</span>
             </h3>
+            <p class="mt-4 text-slate-400 max-w-2xl mx-auto font-medium">
+                Our expert virtual assistants handle the heavy lifting so you can get back to what matters most.
+            </p>
         </div>
 
+        <!-- Grid Container -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
             
-            <div class="reveal group relative aspect-[3/4] md:aspect-square lg:aspect-[4/5] rounded-[2rem] p-8 transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl hover:shadow-primary/10 overflow-hidden border border-slate-100 dark:border-slate-800 bg-white dark:bg-surface">
-                <img src="assets/Email & Calendar" alt="Email & Calendar Management" class="absolute inset-0 w-full h-full object-cover opacity-70 dark:opacity-50 transition-all duration-700 group-hover:scale-110">
-                <div class="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent dark:from-surface dark:via-surface/60 dark:to-transparent opacity-100"></div>
+            <!-- Card 1: Email & Calendar -->
+            <div class="reveal group relative aspect-[3/4] md:aspect-square lg:aspect-[4/5] rounded-[2rem] p-8 transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl hover:shadow-primary/20 overflow-hidden border border-white/5 bg-slate-900/40 backdrop-blur-md">
+                <!-- Background Image with Dark Overlay -->
+                <img src="assets/Email & Calendar" alt="Email & Calendar Management" class="absolute inset-0 w-full h-full object-cover opacity-30 transition-all duration-700 group-hover:scale-110 group-hover:opacity-50">
+                <!-- Darker Gradient to ensure text readability on Black Shade -->
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0a0f1a] via-[#0a0f1a]/80 to-transparent opacity-100"></div>
+                
                 <div class="relative z-10 h-full flex flex-col justify-end text-left">
-                    <div class="w-14 h-14 bg-primary text-white rounded-2xl flex items-center justify-center shadow-lg mb-6 transition-all duration-500 group-hover:rotate-6 group-hover:bg-slate-900 dark:group-hover:bg-white dark:group-hover:text-primary">
+                    <div class="w-14 h-14 bg-primary text-white rounded-2xl flex items-center justify-center shadow-lg mb-6 transition-all duration-500 group-hover:rotate-6 group-hover:bg-white group-hover:text-primary">
                         <i class="fa-solid fa-envelope-open-text text-2xl"></i>
                     </div>
-                    <h4 class="text-2xl font-black mb-3 text-slate-900 dark:text-white drop-shadow-sm">Email & Calendar<br>Management</h4>
-                    <p class="text-slate-800 dark:text-slate-200 text-sm leading-relaxed mb-6 font-bold">Never miss an appointment or an urgent email. We filter your inbox and sync your schedule perfectly.</p>
+                    <h4 class="text-2xl font-black mb-3 text-white drop-shadow-sm">Email & Calendar<br>Management</h4>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-6 font-medium">Never miss an appointment or an urgent email. We filter your inbox and sync your schedule perfectly.</p>
                     <div class="w-8 h-1 bg-primary rounded-full transition-all duration-500 group-hover:w-full"></div>
                 </div>
             </div>
 
-            <div class="reveal delay-100 group relative aspect-[3/4] md:aspect-square lg:aspect-[4/5] rounded-[2rem] p-8 transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl hover:shadow-primary/10 overflow-hidden border border-slate-100 dark:border-slate-800 bg-white dark:bg-surface">
-                <img src="assets/Customer Support" alt="Customer Support" class="absolute inset-0 w-full h-full object-cover opacity-70 dark:opacity-50 transition-all duration-700 group-hover:scale-110">
-                <div class="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent dark:from-surface dark:via-surface/60 dark:to-transparent opacity-100"></div>
+            <!-- Card 2: Customer Support -->
+            <div class="reveal delay-100 group relative aspect-[3/4] md:aspect-square lg:aspect-[4/5] rounded-[2rem] p-8 transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl hover:shadow-primary/20 overflow-hidden border border-white/5 bg-slate-900/40 backdrop-blur-md">
+                <img src="assets/Customer Support" alt="Customer Support" class="absolute inset-0 w-full h-full object-cover opacity-30 transition-all duration-700 group-hover:scale-110 group-hover:opacity-50">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0a0f1a] via-[#0a0f1a]/80 to-transparent opacity-100"></div>
+                
                 <div class="relative z-10 h-full flex flex-col justify-end text-left">
-                    <div class="w-14 h-14 bg-primary text-white rounded-2xl flex items-center justify-center shadow-lg mb-6 transition-all duration-500 group-hover:rotate-6 group-hover:bg-slate-900 dark:group-hover:bg-white dark:group-hover:text-primary">
+                    <div class="w-14 h-14 bg-primary text-white rounded-2xl flex items-center justify-center shadow-lg mb-6 transition-all duration-500 group-hover:rotate-6 group-hover:bg-white group-hover:text-primary">
                         <i class="fa-solid fa-headset text-2xl"></i>
                     </div>
-                    <h4 class="text-2xl font-black mb-3 text-slate-900 dark:text-white drop-shadow-sm">Customer<br>Support</h4>
-                    <p class="text-slate-800 dark:text-slate-200 text-sm leading-relaxed mb-6 font-bold">Professional chat and email support that keeps your customers happy and your brand reputation high.</p>
+                    <h4 class="text-2xl font-black mb-3 text-white drop-shadow-sm">Customer<br>Support</h4>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-6 font-medium">Professional chat and email support that keeps your customers happy and your brand reputation high.</p>
                     <div class="w-8 h-1 bg-primary rounded-full transition-all duration-500 group-hover:w-full"></div>
                 </div>
             </div>
 
-            <div class="reveal delay-200 md:col-span-2 group relative min-h-[300px] md:h-80 rounded-[2rem] p-8 transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl hover:shadow-primary/10 overflow-hidden border border-slate-100 dark:border-slate-800 bg-white dark:bg-surface">
-                <img src="assets/Social Media Management" alt="Social Media Management" class="absolute inset-0 w-full h-full object-cover opacity-70 dark:opacity-50 transition-all duration-700 group-hover:scale-110">
-                <div class="absolute inset-0 bg-gradient-to-r from-white via-white/60 to-transparent dark:from-surface dark:via-surface/80 dark:to-transparent opacity-100"></div>
+            <!-- Card 3: Social Media (HORIZONTAL) -->
+            <div class="reveal delay-200 md:col-span-2 group relative min-h-[320px] md:h-80 rounded-[2rem] p-8 transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl hover:shadow-primary/20 overflow-hidden border border-white/5 bg-slate-900/40 backdrop-blur-md">
+                <img src="assets/Social Media Management" alt="Social Media Management" class="absolute inset-0 w-full h-full object-cover opacity-30 transition-all duration-700 group-hover:scale-110 group-hover:opacity-50">
+                <div class="absolute inset-0 bg-gradient-to-r from-[#0a0f1a] via-[#0a0f1a]/90 to-transparent opacity-100"></div>
 
                 <div class="relative z-10 h-full flex flex-col md:flex-row md:items-center justify-center md:justify-between gap-8">
                     <div class="max-w-md">
-                        <div class="w-14 h-14 bg-primary text-white rounded-2xl flex items-center justify-center shadow-lg mb-6 transition-all duration-500 group-hover:rotate-6 group-hover:bg-slate-900 dark:group-hover:bg-white dark:group-hover:text-primary">
+                        <div class="w-14 h-14 bg-primary text-white rounded-2xl flex items-center justify-center shadow-lg mb-6 transition-all duration-500 group-hover:rotate-6 group-hover:bg-white group-hover:text-primary">
                             <i class="fa-solid fa-share-nodes text-2xl"></i>
                         </div>
-                        <h4 class="text-3xl font-black mb-3 text-slate-900 dark:text-white drop-shadow-sm">Social Media Management</h4>
-                        <p class="text-slate-800 dark:text-slate-200 text-base leading-relaxed font-bold">Boost your online presence with consistent posting, active engagement, and strategic content planning across all your social channels.</p>
+                        <h4 class="text-3xl font-black mb-3 text-white drop-shadow-sm">Social Media Management</h4>
+                        <p class="text-slate-300 text-base leading-relaxed font-medium">Boost your online presence with consistent posting, active engagement, and strategic content planning across all channels.</p>
                     </div>
                     
                     <div class="hidden md:block">
@@ -456,8 +488,9 @@
             </div>
         </div>
 
+        <!-- Footer Button -->
         <div class="mt-20 text-center reveal delay-300">
-            <a href="service.html" class="inline-flex items-center gap-3 bg-white dark:bg-slate-900 border-2 border-primary text-primary hover:bg-primary hover:text-white px-10 py-5 rounded-2xl text-lg font-black transition-all shadow-xl shadow-primary/10 active:scale-95 group">
+            <a href="service.html" class="inline-flex items-center gap-3 bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-white px-10 py-5 rounded-2xl text-lg font-semibold transition-all shadow-xl shadow-primary/10 active:scale-95 group">
                 View All Services
                 <i class="fa-solid fa-plus group-hover:rotate-180 transition-transform duration-500"></i>
             </a>
@@ -475,7 +508,7 @@
         
         <div class="text-center mb-20 reveal">
             <h2 class="text-xs font-black tracking-[0.3em] text-primary uppercase mb-4">The Elite Advantage</h2>
-            <h3 class="text-3xl md:text-5xl font-black tracking-tighter text-slate-900 dark:text-white leading-tight">
+            <h3 class="text-3xl md:text-5xl font-semibold tracking-tighter text-slate-900 dark:text-white leading-tight">
                 Your Investment, <span class=" text-primary">Amplified.</span>
             </h3>
         </div>
@@ -596,7 +629,7 @@
         
         <div class="text-center mb-16 reveal">
             <h2 class="text-xs font-black tracking-[0.3em] text-primary uppercase mb-4">The Smart Choice</h2>
-            <h3 class="text-3xl md:text-5xl font-black tracking-tighter text-slate-900 dark:text-white">
+            <h3 class="text-3xl md:text-5xl font-semibold tracking-tighter text-slate-900 dark:text-white">
                 Why Choose Us Over <span class="text-primary ">In-House?</span>
             </h3>
         </div>
@@ -674,7 +707,7 @@
         
         <div class="text-center mb-12 reveal">
             <h2 class="text-xs font-black tracking-[0.3em] text-primary uppercase mb-4">Investment Plans</h2>
-            <h3 class="text-3xl md:text-5xl font-black tracking-tighter text-slate-900 dark:text-white">
+            <h3 class="text-3xl md:text-5xl font-semibold tracking-tighter text-slate-900 dark:text-white">
                 Simple Plans for <span class="text-primary ">Every Scale</span>
             </h3>
             
@@ -786,7 +819,7 @@
         
         <div class="text-center mb-20 reveal">
             <h2 class="text-xs font-black tracking-[0.3em] text-primary uppercase mb-4">Success Stories</h2>
-            <h3 class="text-3xl md:text-5xl font-black tracking-tighter text-slate-900 dark:text-white">
+            <h3 class="text-3xl md:text-5xl font-semibold tracking-tighter text-slate-900 dark:text-white">
                 Trusted by <span class="text-primary ">Visionaries</span>
             </h3>
         </div>
@@ -880,7 +913,7 @@
                     Join 500+ Productive Businesses
                 </div>
 
-                <h2 class="reveal delay-200 text-4xl md:text-6xl font-black text-white tracking-tighter mb-10 leading-[1.1]">
+                <h2 class="reveal delay-200 text-4xl md:text-6xl font-semibold text-white tracking-tighter mb-10 leading-[1.1]">
                     Ready to Take Back <br> Your <span class="text-primary ">Time?</span>
                 </h2>
                 
@@ -889,7 +922,7 @@
                 </p>
 
                 <div class="reveal delay-400 flex flex-col sm:flex-row justify-center items-center gap-6">
-                    <a href="booknow.html" class="group relative w-full sm:w-auto bg-primary text-white px-12 py-5 rounded-2xl text-lg font-black transition-all hover:scale-105 active:scale-95 shadow-xl shadow-primary/40 flex items-center justify-center">
+                    <a href="booknow.html" class="group relative w-full sm:w-auto bg-primary text-white px-12 py-5 rounded-2xl text-lg font-semibold transition-all hover:scale-105 active:scale-95 shadow-xl shadow-primary/40 flex items-center justify-center">
                         Hire a Virtual Assistant
                         <i class="fa-solid fa-arrow-right ml-3 group-hover:translate-x-2 transition-transform"></i>
                     </a>
