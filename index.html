@@ -719,26 +719,26 @@
     
     <!-- Sarah Jenkins -->
     <div class="reveal group relative bg-slate-50 dark:bg-surface rounded-[2rem] overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 flex flex-col sm:flex-row lg:flex-col">
-        <!-- Fix: Set min-h for small screens to prevent collapse, maintain full width -->
-        <div class="relative w-full sm:w-2/5 lg:w-full h-64 xs:h-72 sm:h-auto lg:h-72 overflow-hidden">
-            <img src="assets/t2" alt="Sarah" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700">
+        <!-- Image: Fixed height on mobile prevents layout shift -->
+        <div class="relative w-full sm:w-2/5 lg:w-full h-64 sm:h-auto lg:h-72 overflow-hidden shrink-0">
+            <img src="assets/t2" alt="Sarah Jenkins" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700">
             <div class="absolute top-4 left-4 bg-white/90 dark:bg-darkBg/90 backdrop-blur-md px-3 py-1.5 rounded-full shadow-lg z-10">
                 <p class="text-[9px] font-black text-primary uppercase tracking-widest leading-none">5+ Years Exp.</p>
             </div>
         </div>
 
-        <!-- Fix: Use px-5 for mobile (360px) to give content more room, md:p-8 for desktop -->
-        <div class="flex-1 px-5 py-6 md:p-8 pt-6 relative flex flex-col justify-center">
-            <h4 class="text-xl md:text-2xl font-black text-slate-900 dark:text-white mb-1">Sarah Jenkins</h4>
-            <p class="text-primary font-bold text-xs md:text-sm mb-4 uppercase tracking-widest italic">Senior Executive VA</p>
+        <!-- Content: px-4 is critical for 360px widths -->
+        <div class="flex-1 px-4 py-6 xs:px-6 md:p-8 relative flex flex-col justify-center min-w-0">
+            <h4 class="text-xl md:text-2xl font-black text-slate-900 dark:text-white mb-1 truncate">Sarah Jenkins</h4>
+            <p class="text-primary font-bold text-xs md:text-sm mb-4 uppercase tracking-widest italic truncate">Senior Executive VA</p>
             
             <div class="flex flex-wrap gap-1.5 mb-6">
                 <span class="px-2.5 py-1 bg-white dark:bg-darkBg border border-slate-100 dark:border-slate-700 rounded-lg text-[9px] font-bold text-slate-500 uppercase tracking-wider">CRM</span>
                 <span class="px-2.5 py-1 bg-white dark:bg-darkBg border border-slate-100 dark:border-slate-700 rounded-lg text-[9px] font-bold text-slate-500 uppercase tracking-wider">Excel</span>
             </div>
 
-            <!-- Fix: Button w-full with relative tracking for smaller width -->
-            <a href="#" class="block text-center w-full py-3.5 md:py-4 rounded-2xl border-2 border-primary text-primary font-black uppercase text-[10px] tracking-[0.15em] sm:tracking-[0.2em] hover:bg-primary hover:text-white transition-all">
+            <!-- Button: tracking-tighter on tiny screens prevents overlap -->
+            <a href="#" class="block text-center w-full py-3.5 md:py-4 rounded-2xl border-2 border-primary text-primary font-black uppercase text-[10px] tracking-tighter xs:tracking-widest hover:bg-primary hover:text-white transition-all whitespace-nowrap">
                 View Full Profile
             </a>
         </div>
@@ -746,20 +746,23 @@
 
     <!-- David Chen -->
     <div class="reveal delay-100 group relative bg-slate-50 dark:bg-surface rounded-[2rem] overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 flex flex-col sm:flex-row lg:flex-col">
-        <div class="relative w-full sm:w-2/5 lg:w-full h-64 xs:h-72 sm:h-auto lg:h-72 overflow-hidden">
-            <img src="assets/t4" alt="David" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700">
+        <div class="relative w-full sm:w-2/5 lg:w-full h-64 sm:h-auto lg:h-72 overflow-hidden shrink-0">
+            <img src="assets/t4" alt="David Chen" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700">
             <div class="absolute top-4 left-4 bg-white/90 dark:bg-darkBg/90 backdrop-blur-md px-3 py-1.5 rounded-full shadow-lg z-10">
                 <p class="text-[9px] font-black text-primary uppercase tracking-widest leading-none">7+ Years Exp.</p>
             </div>
         </div>
-        <div class="flex-1 px-5 py-6 md:p-8 pt-6 relative flex flex-col justify-center">
-            <h4 class="text-xl md:text-2xl font-black text-slate-900 dark:text-white mb-1">David Chen</h4>
-            <p class="text-primary font-bold text-xs md:text-sm mb-4 uppercase tracking-widest italic">Project Coordinator</p>
+
+        <div class="flex-1 px-4 py-6 xs:px-6 md:p-8 relative flex flex-col justify-center min-w-0">
+            <h4 class="text-xl md:text-2xl font-black text-slate-900 dark:text-white mb-1 truncate">David Chen</h4>
+            <p class="text-primary font-bold text-xs md:text-sm mb-4 uppercase tracking-widest italic truncate">Project Coordinator</p>
+            
             <div class="flex flex-wrap gap-1.5 mb-6">
                 <span class="px-2.5 py-1 bg-white dark:bg-darkBg border border-slate-100 dark:border-slate-700 rounded-lg text-[9px] font-bold text-slate-500 uppercase tracking-wider">Asana</span>
                 <span class="px-2.5 py-1 bg-white dark:bg-darkBg border border-slate-100 dark:border-slate-700 rounded-lg text-[9px] font-bold text-slate-500 uppercase tracking-wider">Data</span>
             </div>
-            <a href="#" class="block text-center w-full py-3.5 md:py-4 rounded-2xl border-2 border-primary text-primary font-black uppercase text-[10px] tracking-[0.15em] sm:tracking-[0.2em] hover:bg-primary hover:text-white transition-all">
+
+            <a href="#" class="block text-center w-full py-3.5 md:py-4 rounded-2xl border-2 border-primary text-primary font-black uppercase text-[10px] tracking-tighter xs:tracking-widest hover:bg-primary hover:text-white transition-all whitespace-nowrap">
                 View Full Profile
             </a>
         </div>
@@ -767,24 +770,28 @@
 
     <!-- Elena Rodriguez -->
     <div class="reveal delay-200 group relative bg-slate-50 dark:bg-surface rounded-[2rem] overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 flex flex-col sm:flex-row lg:flex-col">
-        <div class="relative w-full sm:w-2/5 lg:w-full h-64 xs:h-72 sm:h-auto lg:h-72 overflow-hidden">
-            <img src="assets/t1" alt="Elena" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700">
+        <div class="relative w-full sm:w-2/5 lg:w-full h-64 sm:h-auto lg:h-72 overflow-hidden shrink-0">
+            <img src="assets/t1" alt="Elena Rodriguez" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700">
             <div class="absolute top-4 left-4 bg-white/90 dark:bg-darkBg/90 backdrop-blur-md px-3 py-1.5 rounded-full shadow-lg z-10">
                 <p class="text-[9px] font-black text-primary uppercase tracking-widest leading-none">4+ Years Exp.</p>
             </div>
         </div>
-        <div class="flex-1 px-5 py-6 md:p-8 pt-6 relative flex flex-col justify-center">
-            <h4 class="text-xl md:text-2xl font-black text-slate-900 dark:text-white mb-1">Elena Rodriguez</h4>
-            <p class="text-primary font-bold text-xs md:text-sm mb-4 uppercase tracking-widest italic">Customer Success</p>
+
+        <div class="flex-1 px-4 py-6 xs:px-6 md:p-8 relative flex flex-col justify-center min-w-0">
+            <h4 class="text-xl md:text-2xl font-black text-slate-900 dark:text-white mb-1 truncate">Elena Rodriguez</h4>
+            <p class="text-primary font-bold text-xs md:text-sm mb-4 uppercase tracking-widest italic truncate">Customer Success</p>
+            
             <div class="flex flex-wrap gap-1.5 mb-6">
                 <span class="px-2.5 py-1 bg-white dark:bg-darkBg border border-slate-100 dark:border-slate-700 rounded-lg text-[9px] font-bold text-slate-500 uppercase tracking-wider">Zendesk</span>
                 <span class="px-2.5 py-1 bg-white dark:bg-darkBg border border-slate-100 dark:border-slate-700 rounded-lg text-[9px] font-bold text-slate-500 uppercase tracking-wider">Social</span>
             </div>
-            <a href="#" class="block text-center w-full py-3.5 md:py-4 rounded-2xl border-2 border-primary text-primary font-black uppercase text-[10px] tracking-[0.15em] sm:tracking-[0.2em] hover:bg-primary hover:text-white transition-all">
+
+            <a href="#" class="block text-center w-full py-3.5 md:py-4 rounded-2xl border-2 border-primary text-primary font-black uppercase text-[10px] tracking-tighter xs:tracking-widest hover:bg-primary hover:text-white transition-all whitespace-nowrap">
                 View Full Profile
             </a>
         </div>
     </div>
+
 </div>
 </div>
 
