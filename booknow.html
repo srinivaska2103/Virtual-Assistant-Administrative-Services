@@ -116,10 +116,7 @@
            <div class="lg:hidden flex items-center gap-3">
     <!-- Theme Toggle -->
     <!-- Added 'box-border' to ensure the 2px border stays INSIDE the 44px (w-11) limit -->
-    <button onclick="toggleTheme()" 
-            class="w-11 h-11 flex items-center justify-center rounded-xl border-2 border-slate-100 dark:border-white/10 text-primary transition-all hover:bg-slate-50 dark:hover:bg-white/5 active:scale-90 box-border">
-        <i class="fa-solid fa-circle-half-stroke text-lg"></i>
-    </button>
+   
 
     <!-- Menu Button -->
     <!-- Added a transparent border to match the Theme Toggle's geometry exactly -->
@@ -158,6 +155,10 @@
     <div class="flex items-center justify-between py-4 border-t border-slate-50 dark:border-slate-800">
         <span class="text-sm font-bold uppercase tracking-widest text-slate-500">Direction</span>
         <button onclick="toggleDirection()" class="font-black uppercase text-primary text-sm border-b-2 border-primary">LTR/RTL</button>
+         <button onclick="toggleTheme()" 
+            class="w-11 h-11 flex items-center justify-center rounded-xl border-2 border-slate-100 dark:border-white/10 text-primary transition-all hover:bg-slate-50 dark:hover:bg-white/5 active:scale-90 box-border">
+        <i class="fa-solid fa-circle-half-stroke text-lg"></i>
+    </button>
     </div>
 
     <div class="pt-4 space-y-4">
